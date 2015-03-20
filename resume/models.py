@@ -9,7 +9,7 @@ class Job(models.Model):
     job_description = models.TextField(null=True)
 
     def __unicode__(self):
-        return self.company_name
+        return str(self.company_name + " - " + self.job_title)
 
     def still_employed(self):
         # does Doug still work at this job?
