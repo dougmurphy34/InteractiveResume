@@ -8,8 +8,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# DO NOT Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# INSTEAD, build them using unipath like this: Path(__file__).ancestor(3)
 import os
+from unipath import Path
 
 
 # This is the only time I will import directly from Django into my settings.
@@ -83,10 +85,12 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ALLOWED_HOSTS = ['*']
 
 # Static asset configuration
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '../static/'
+BASE_DIR = Path(__file__).ancestor(3)
+STATIC_ROOT = BASE_DIR.child("static")
+STATIC_URL = "/static/"
 
+"""
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
+    BASE_DIR.child("assets")
 )
+"""
