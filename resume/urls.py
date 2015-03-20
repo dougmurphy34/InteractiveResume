@@ -7,5 +7,6 @@ urlpatterns = patterns('',
     # url(r'^$', 'irf.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^$', 'resume.views.index', name='index')
+    url(r'^$', 'resume.views.index', name='index'),
+    url(r'joblist', 'resume.views.allmyjobs', name='joblist')
 )

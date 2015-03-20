@@ -89,6 +89,10 @@ BASE_DIR = Path(__file__).ancestor(3)
 STATIC_ROOT = BASE_DIR.child("static")
 STATIC_URL = "/static/"
 
+TEMPLATE_DIRS = (
+    BASE_DIR.child('templates'),
+)
+
 """
 STATICFILES_DIRS = (
     BASE_DIR.child("assets")
