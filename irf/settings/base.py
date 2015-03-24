@@ -96,5 +96,5 @@ TEMPLATE_DIRS = (
 
 
 STATICFILES_DIRS = (
-    BASE_DIR.child("assets")
+    BASE_DIR.child("assets"),
 )
