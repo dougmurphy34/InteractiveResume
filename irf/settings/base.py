@@ -47,6 +47,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'resume',
+    'bootstrap3',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -93,8 +94,7 @@ TEMPLATE_DIRS = (
     BASE_DIR.child('templates'),
 )
 
-"""
+
 STATICFILES_DIRS = (
     BASE_DIR.child("assets")
 )
-"""

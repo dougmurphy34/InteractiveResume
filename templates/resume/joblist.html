@@ -1,15 +1,54 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-{% for job in joblist %}
-    <p>
-    <b>Job</b>: {{ job }}<br />
-    <b>Description</b>: {{ job.job_description }}
-    </p>
-{% endfor %}
-</body>
-</html>
+{% extends 'resume/base.html' %}
+
+<div class="container">
+
+
+
+    {% block body_block %}
+
+
+        <h3>These are the jobs that I have had, pulled from postgresql, drawn in a bootstrap table <span style="color:green;">(current)</span>:</h3>
+
+        <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Job</th>
+            <th>Description</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for job in joblist %}
+                <tr{% if not job.end_date %} class="success"{% endif %}>
+                    <td>{{ job }}</td>
+                    <td>{{ job.job_description }}</td>
+                    <td>{{ job.start_date }}</td>
+                    <td>{{ job.end_date }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+        </table>
+
+        <h2>Same data, drawn in a grid by Boostrap3:</h2>
+
+        <div class="row">
+            <div class="col-sm-3"><h1>Job</h1></div>
+            <div class="col-sm-5"><h1>Description</h1></div>
+            <div class="col-sm-2">Start Date</div>
+            <div class="col-sm-2">End Date</div>
+        </div>
+
+        {% for job in joblist %}
+            <div class="row">
+                <div class="col-sm-3">{{ job }}</div>
+                <div class="col-sm-5">{{ job.job_description }}</div>
+                <div class="col-sm-2">{{ job.start_date }}</div>
+                <div class="col-sm-2">{{ job.end_date }}</div>
+            </div>
+        {% endfor %}
+
+    {% endblock %}
+
+</div>

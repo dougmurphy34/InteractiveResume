@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    {% block bootstrap3_head_scripts %}
+        <!-- ALL OF THIS PER W3SCHOOLS -->
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    {% endblock %}
+
+    <title>{% block title_block %}Doug Murphy Interactive Resume{% endblock %}</title>
+</head>
+<body>
+    {% block body_block %} This is the default content for body_block in base.html.{% endblock %}
+</body>
+</html>
