@@ -98,3 +98,8 @@ TEMPLATE_DIRS = (
 STATICFILES_DIRS = (
     BASE_DIR.child("assets"),
 )
+
+# for whitenoise support of gzips and forever-cacheing
+# see https://warehouse.python.org/project/whitenoise/
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
