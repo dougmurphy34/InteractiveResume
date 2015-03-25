@@ -1,9 +1,11 @@
 {% extends 'resume/base.html' %}
+{% load static %}
 
 {% block body_block %}
     <div class="container">
         Welcome to Doug's Interactive Resume Project!
+    <p><img src="{% static "DougFace2.JPG" %}" alt="DougImage2" style="width:100px; image-orientation:90deg"></p>
 
-        <a href="../resume/joblist.html">List of My Jobs</a>
+        <p><a href="/joblist">List of My Jobs</a></p>
     </div>
 {% endblock %}

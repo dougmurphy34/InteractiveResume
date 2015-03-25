@@ -94,8 +94,7 @@ TEMPLATE_DIRS = (
     BASE_DIR.child('templates'),
 )
 
-"""
+
 STATICFILES_DIRS = (
     BASE_DIR.child("assets"),
 )
-"""
