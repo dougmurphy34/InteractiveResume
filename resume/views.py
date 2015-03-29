@@ -9,7 +9,13 @@ def index(request):
     return render(request, template, context)
 
 
-def allmyjobs(request):
+def all_my_jobs(request):
     jobs = Job.objects.get_queryset().order_by('start_date')
 
-    return render(request, 'resume/joblist.html', {'joblist': jobs})
+    return render(request, 'resume/job_list.html', {'joblist': jobs})
+
+
+def job_detail(request, job_id):
+    job = Job.objects.get(pk=job_id)
+
+    return render(request, 'resume/job_detail.html', {'job': job})

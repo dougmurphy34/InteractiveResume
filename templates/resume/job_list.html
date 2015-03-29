@@ -1,14 +1,6 @@
 {% extends 'resume/base.html' %}
 
 <div class="container">
-{% load static %}
-
-{% block bootstrap3_head_scripts %}
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    <script src={% static 'jquery.min.js' %}></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-
-{% endblock %}
 
     {% block body_block %}
 
@@ -20,6 +12,7 @@
         <tr>
             <th>Job</th>
             <th>Description</th>
+            <th>Service Time</th>
             <th>Start Date</th>
             <th>End Date</th>
         </tr>
@@ -27,8 +20,9 @@
         <tbody>
             {% for job in joblist %}
                 <tr{% if not job.end_date %} class="success"{% endif %}>
-                    <td>{{ job }}</td>
+                    <td><a href="{% url 'resume.views.job_detail' job_id=job.id%}">{{ job }}</a></td>
                     <td>{{ job.job_description }}</td>
+                    <td><span class="badge"> {{ job.service_time }} </span></td>
                     <td>{{ job.start_date }}</td>
                     <td>{{ job.end_date }}</td>
                 </tr>

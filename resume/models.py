@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 
 class Job(models.Model):
@@ -14,6 +15,20 @@ class Job(models.Model):
     def still_employed(self):
         # does Doug still work at this job?
         return self.end_date is None
+
+    def service_time(self):
+
+        years_since = 0
+        round_up = 0
+
+        if (self.still_employed()):
+            years_since = datetime.date.today() - self.start_date
+        else:
+            years_since = self.end_date - self.start_date
+
+        if (years_since.days % 365.25) > 182:
+            round_up = 1
+        return int(years_since.days / 365.25) + round_up
 
 
 class Accomplishment(models.Model):

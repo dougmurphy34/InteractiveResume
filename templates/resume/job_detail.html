@@ -1,0 +1,62 @@
+{% extends 'resume/base.html' %}
+
+
+
+{% block page_scripts %}
+    <script>
+        // create our angular app and inject ui.bootstrap
+        var mr_app = angular.module('mr_app', ['ui.bootstrap']);
+        mr_app.controller('mainController', function($scope) {
+
+        // define yourName variable and initialize to blank
+            $scope.yourName = "Frida";
+            $scope.feelings = $scope.yourName;
+            $scope.originalName = "Billson";
+            //$scope.bigData.lunch = true;
+
+        });
+    </script>
+{% endblock %}
+
+{% block body_block %}
+    <h2>Job detail page for my time at: {{ job.company_name }}</h2>
+    <h4><a href="{% url 'resume.views.all_my_jobs' %}">return to joblist</a></h4>
+    <div ng-app="mr_app" class="container" ng-init="defaultName='Igor'"><!-- Giving this ng-controller=mainController to match the script above breaks it.  Why? -->
+        <label>Name:</label>
+        <input type="text" ng-model="yourName" placeholder="Enter a name here">
+
+        <h1>Hello, {% verbatim %}{{yourName}}{% endverbatim %}!</h1>
+        <hr>
+        <label>Other stuff:</label>
+        <input type="text" ng-model="feelings" placeholder="Your feelings">
+
+        <h1>I understand you are feeling {% verbatim %}{{ feelings }}{% endverbatim %}</h1>
+        <hr>
+        <h2>Billson's name, according to the controller, is: <span ng-bind="originalName"></span></h2>
+        <h2>Igor's name, according to ng-init, is: <span ng-bind="defaultName"></span></h2>
+
+
+         <div class="btn-group" data-toggle="buttons">
+
+            <label class="btn btn-primary" ng-model="bigData.breakfast" btn-checkbox>
+              Breakfast
+            </label>
+
+            <label class="btn btn-primary" ng-model="bigData.lunch" btn-checkbox>
+              Lunch
+            </label>
+
+            <label class="btn btn-primary" ng-model="bigData.dinner" btn-checkbox>
+              Dinner
+            </label>
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+{% endblock %}
