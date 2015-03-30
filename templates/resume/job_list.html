@@ -22,7 +22,7 @@
                 <tr{% if not job.end_date %} class="success"{% endif %}>
                     <td><a href="{% url 'resume.views.job_detail' job_id=job.id%}">{{ job }}</a></td>
                     <td>{{ job.job_description }}</td>
-                    <td><span class="badge"> {{ job.service_time }} </span></td>
+                    <td><span class="badge"> {{ job.service_time }} Year{% if job.service_time != 1 %}s{% endif %} </span></td>
                     <td>{{ job.start_date }}</td>
                     <td>{{ job.end_date }}</td>
                 </tr>
