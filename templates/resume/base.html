@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
 
     {% block angular_bootstrap %}
-        <!-- ALL OF THIS PER W3SCHOOLS -->
+        <!-- Load Angular.js script, Bootstrap CSS,
+        and ui-bootstrap.js that lets the two work together without jquery -->
+
         {% load static %}
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,20 +16,18 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
         <!-- ui-bootstrap (for Angular/bootstrap compatibility; incompatible with jQuery -->
         <script src="{% static 'js/ui-bootstrap-tpls-0.12.1.min.js' %}"></script>
-
-        <!-- no longer using jquery, replacing with ui-bootstrap to allow for using Angular with Bootstrap
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
-        <script src="{% static 'js/bootstrap.min.js' %}"></script>
-        -->
    {% endblock %}
 
     {% block page_scripts %}
+        <!-- Any page-specific script tags or imports can go here -->
     {% endblock %}
 
     <title>{% block title_block %}Doug Murphy Interactive Resume{% endblock %}</title>
 </head>
 <body>
-    {% block body_block %} This is the default content for body_block in base.html.{% endblock %}
+    {% block body_block %}
+        <!-- this should always be replaced by page content -->
+        This is the default content for body_block in base.html.
+    {% endblock %}
 </body>
 </html>

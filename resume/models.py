@@ -21,7 +21,7 @@ class Job(models.Model):
         years_since = 0
         round_up = 0
 
-        if (self.still_employed()):
+        if self.still_employed():
             years_since = datetime.date.today() - self.start_date
         else:
             years_since = self.end_date - self.start_date
