@@ -28,7 +28,23 @@ class Job(models.Model):
 
         if (years_since.days % 365.25) > 182:
             round_up = 1
-        return int(years_since.days / 365.25) + round_up
+
+        final_answer = int(years_since.days / 365.25) + round_up
+
+        if final_answer == 0:
+            return "< 1"
+        else:
+            return final_answer
+
+    def date_range(self):
+        range_string = self.start_date.strftime('%B') + " " + str(self.start_date.year)
+
+        if self.still_employed():
+            range_string += " - today"
+        else:
+            range_string += " - " + self.end_date.strftime('%B') + " " + str(self.end_date.year)
+
+        return range_string
 
 
 class Accomplishment(models.Model):

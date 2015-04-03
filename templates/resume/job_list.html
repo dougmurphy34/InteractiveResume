@@ -13,8 +13,6 @@
             <th>Job</th>
             <th>Description</th>
             <th>Service Time</th>
-            <th>Start Date</th>
-            <th>End Date</th>
         </tr>
         </thead>
         <tbody>
@@ -22,33 +20,12 @@
                 <tr{% if not job.end_date %} class="success"{% endif %}>
                     <td><a href="{% url 'resume.views.job_detail' job_id=job.id%}">{{ job }}</a></td>
                     <td>{{ job.job_description }}</td>
-                    <td><span class="badge"> {{ job.service_time }} Year{% if job.service_time != 1 %}s{% endif %} </span></td>
-                    <td>{{ job.start_date }}</td>
-                    <td>{{ job.end_date }}</td>
+                    <td><span class="badge" title="{{ job.date_range }}"> {{ job.service_time }} Year{% if job.service_time != 1 %}s{% endif %} </span></td>
                 </tr>
             {% endfor %}
         </tbody>
 
         </table>
-<!-- TODO: Remove this, you're doing unnecessary processing
-        <h2>Same data, drawn in a grid by Boostrap3:</h2>
-
-        <div class="row">
-            <div class="col-sm-3"><h1>Job</h1></div>
-            <div class="col-sm-5"><h1>Description</h1></div>
-            <div class="col-sm-2">Start Date</div>
-            <div class="col-sm-2">End Date</div>
-        </div>
-
-        {% for job in joblist %}
-            <div class="row">
-                <div class="col-sm-3">{{ job }}</div>
-                <div class="col-sm-5">{{ job.job_description }}</div>
-                <div class="col-sm-2">{{ job.start_date }}</div>
-                <div class="col-sm-2">{{ job.end_date }}</div>
-            </div>
-        {% endfor %}
--->
     {% endblock %}
 
 </div>
