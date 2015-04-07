@@ -44,17 +44,42 @@
         <h2><img src="{% static "DougFace2.JPG" %}" alt="DougImage2" class="img-rounded front-page-image">  Welcome to Doug's Interactive Resume Project!</h2>
     </div>
 
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+          <a class="navbar-brand" href="{% url 'resume.views.index' %}">Doug's Interactive Resume</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="{% url 'resume.views.index' %}">Welcome</a></li>
+            <li><a href="{% url 'resume.views.resume' %}">Resume</a></li>
+            <li><a href="{% url 'resume.views.all_my_jobs' %}">Work Summary</a></li>
+            <li><a href="{% url 'resume.views.portfolio' %}">Portfolio</a></li>
+            <li><a href="{% url 'resume.views.contact' %}">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
     <!-- Page Body -->
     {% block body_block %}
         <!-- this should always be replaced by page content -->
         This is the default content for body_block in base.html.
     {% endblock %}
 
-    <!-- NAVIGATION -->
+    <!-- OLD NAVIGATION
     <div id="navigation">
         <h3><a href="/">Home</a></h3>
         <h3><a href="/joblist">List of My Jobs</a></h3>
     </div>
+    -->
 
     <!-- Page Footer -->
 
