@@ -12,7 +12,7 @@ def create_job(company_name, job_title):
 
 class JobListViewTests(TestCase):
     def test_job_list_with_no_jobs(self):
-        # TODO: custom error message.  There should never be zero jobs in the db.
+        # TODO 5): custom error message.  There should never be zero jobs in the db.
         response = self.client.get(reverse('job_list')) #as named in urls.py
         self.assertEqual(response.status_code, 200)
 
