@@ -36,7 +36,7 @@
 
         <style>
             #menuSpacerDiv {
-                margin-top: 50px;
+                margin-top: 60px;
             }
             /*this should not be necessary.  Why am I losing the default style?  Find it in  bootstrap.css.
             .navbar {
@@ -62,7 +62,7 @@
 <div id="menuSpacerDiv"></div>
 
     <!-- Top Navigation -->
-    <nav class="navbar navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
 
         <div class="navbar-header">
@@ -76,10 +76,10 @@
         <div class="collapse navbar-collapse navbar-responsive-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
             <li class="active"><a href="{% url 'resume.views.index' %}">Welcome</a></li>
-            <li><a href="{% url 'resume.views.resume' %}">Resume</a></li>
-            <li><a href="{% url 'resume.views.all_my_jobs' %}">Work Summary</a></li>
-            <li><a href="{% url 'resume.views.portfolio' %}">Portfolio</a></li>
-            <li><a href="{% url 'resume.views.contact' %}">Contact</a></li>
+            <li><a href="{% url 'resume.views.resume' %}"><span class="glyphicon glyphicon-book"></span> Resume</a></li>
+            <li><a href="{% url 'resume.views.all_my_jobs' %}"><span class="glyphicon glyphicon-briefcase"></span> Work Summary</a></li>
+            <li><a href="{% url 'resume.views.portfolio' %}"><span class="glyphicon glyphicon-blackboard"></span> Portfolio</a></li>
+            <li><a href="{% url 'resume.views.contact' %}"><span class="glyphicon glyphicon-envelope"></span> Contact</a></li>
           </ul>
         </div>
       </div>
@@ -95,7 +95,7 @@
     <!-- Page Footer -->
 
     <footer>
-        <h6>Prefer a <a href="{% static 'DougMurphyResume12-10-2014.pdf' %}">traditional PDF resume</a>?</h6>
+        <h4>Prefer a <a href="{% static 'DougMurphyResume12-10-2014.pdf' %}">traditional PDF resume</a>?</h4>
     </footer>
 </body>
 </html>

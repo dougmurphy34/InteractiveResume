@@ -1,9 +1,10 @@
 .front-page-image {
-    width:100px;
+    width:120px;
     -webkit-transform: rotate(95deg);
     transform: rotate(85deg);
-    /*float: left;
-    padding-right: 10px;*/
+    margin: 10px;
+    float: left;
+    /*padding-right: 10px;*/
 }
 
 body {
@@ -25,6 +26,10 @@ h3:first-letter {
     font-size: 1.5em;
 }
 
+.welcomeText {
+    font-size: 1.3em;
+
+}
 
  /*
 #navigation {
@@ -62,6 +67,18 @@ h3:first-letter {
 
 footer {
     clear: both;
+    margin-top: 30px;
+    background-color: #222222;
+    height: 50px;
+
+}
+
+footer h4 {
+    color: #dddddd;
+    position: relative;
+    left: 15px;
+    top: 10px;
+    width: 80%;
 }
 /*
 #genus_examples > li {

@@ -23,9 +23,9 @@ class JobListViewTests(TestCase):
 
 
 class JobDetailViewTests(TestCase):
-    """ TODO: This correctly does not return a 200 (because no job selected), but
-            I need to handle this error gracefully
-    def test_job_detail_with_no_jobs(self):
+    #TODO: This correctly does not return a 200 (because no job selected), but I need to handle this error gracefully
+
+    """ def test_job_detail_with_no_jobs(self):
         response = self.client.get(reverse('job_detail', args=(1,)))
         self.assertEqual(response.status_code, 200)
     """
@@ -33,3 +33,31 @@ class JobDetailViewTests(TestCase):
         local_job = create_job("Some Job", "Worker Bee")
         response = self.client.get(reverse('job_detail', args=(local_job.id,)))
         self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Some Job")
+
+
+class WelcomeViewTests(TestCase):
+    def test_welcome_loads(self):
+        response = self.client.get(reverse('index', args=()))
+        self.assertEqual(response.status_code, 200)
+
+
+class PortfolioViewTests(TestCase):
+    def test_portfolio_loads(self):
+        response = self.client.get(reverse('portfolio', args=()))
+        self.assertEqual(response.status_code, 200)
+
+
+#The contact template is called from irf's urls.py, not resume's.  But this test still works.
+class ContactViewTests(TestCase):
+    def test_contact_loads(self):
+        response = self.client.get(reverse('contact', args=()))
+        self.assertEqual(response.status_code, 200)
+
+
+class ResumeViewTests(TestCase):
+    def test_resume_with_one_job(self):
+        local_job = create_job("Carousel Job", "Operator")
+        response = self.client.get(reverse('resume'), args=local_job)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Carousel Job")
