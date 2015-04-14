@@ -8,6 +8,7 @@ class Job(models.Model):
     end_date = models.DateField(blank=True, null=True)
     job_title = models.CharField(max_length=50)
     job_description = models.TextField(null=True)
+    company_logo = models.CharField(null=True)
 
     def __unicode__(self):
         return str(self.company_name + " - " + self.job_title)

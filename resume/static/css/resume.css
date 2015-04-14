@@ -1,15 +1,13 @@
-.front-page-image {
-    width:120px;
-    -webkit-transform: rotate(95deg);
-    transform: rotate(85deg);
-    margin: 10px;
-    float: left;
-    /*padding-right: 10px;*/
+body {
+    font-family: "Open Sans Condensed", arial, helvetica, serif;
 }
 
-body {
-    font-family: "Open Sans Condensed", arial, helvetica, serif
+h1 {
+    color: rgba(99,0,0,1);
+}
 
+h1 + p {
+    font-weight: bold;
 }
 
 h2 {
@@ -26,9 +24,33 @@ h3:first-letter {
     font-size: 1.5em;
 }
 
+footer {
+    clear: both;
+    margin-top: 30px;
+    background-color: #222222;
+    height: 50px;
+
+}
+
+footer h4 {
+    color: #dddddd;
+    position: relative;
+    left: 15px;
+    top: 10px;
+    width: 80%;
+}
+
 .welcomeText {
     font-size: 1.3em;
 
+}
+.front-page-image {
+    width:120px;
+    -webkit-transform: rotate(95deg);
+    transform: rotate(85deg);
+    margin: 10px;
+    float: left;
+    /*padding-right: 10px;*/
 }
 
  /*
@@ -65,35 +87,12 @@ h3:first-letter {
 }
 */
 
-footer {
-    clear: both;
-    margin-top: 30px;
-    background-color: #222222;
-    height: 50px;
-
-}
-
-footer h4 {
-    color: #dddddd;
-    position: relative;
-    left: 15px;
-    top: 10px;
-    width: 80%;
-}
 /*
 #genus_examples > li {
     border: 1px solid red
 }
 
 */
-
-h1 {
-    color: rgba(99,0,0,1);
-}
-
-h1 + p {
-    font-weight: bold;
-}
 
 /*
 a:link {
