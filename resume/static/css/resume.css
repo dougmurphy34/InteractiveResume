@@ -46,8 +46,8 @@ footer h4 {
 }
 .front-page-image {
     width:120px;
-    -webkit-transform: rotate(95deg);
-    transform: rotate(85deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
     margin: 10px;
     float: left;
     /*padding-right: 10px;*/

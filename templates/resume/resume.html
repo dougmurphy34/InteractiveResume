@@ -48,16 +48,22 @@
             display: inline-block;
             height: auto;
             margin: 0 !important;
-            width: 70px;
+            width: auto;
         }
 
         #jobCarousel .carousel-indicators li img {
             display: block;
-            width: 70px;
+            height: 60px;
+            width: 60px;
         }
 
         #jobCarousel .carousel-outer {
             position: relative;
+        }
+
+        .inlineLogo {
+            height: 40px;
+            border-radius: 10px;
         }
 
     </style>
@@ -74,13 +80,13 @@
     <div class="carousel-outer">
         <div class="carousel-inner" role="listbox">
             {% for job in joblist %}
-                <!-- TODO: Pull style off of looped Div and into <style> block or .css -->
+                <!-- TODO 6): Pull style off of looped Div and into <style> block or .css -->
                 <div class="item{% if job.pk == 1 %} active{% endif %}" id="slide{{ forloop.counter0 }}" style="width: 85%; margin: auto;">
                     <table>
                         <tbody>
                             <tr>
                                 <td><h2>Company:</h2> </td>
-                                <td><h4>{{ job.company_name }}</h4></td>
+                                <td><h4><img src="{% static job.company_logo %}" alt="logo" class="inlineLogo"/> {{ job.company_name }}</h4></td>
                             </tr>
                             <tr>
                                 <td><h2>Position:</h2> </td>
@@ -118,7 +124,7 @@
 
     <ol class="carousel-indicators">
         {% for job in joblist %}
-            <li data-target="#jobCarousel" data-slide-to="{{ forloop.counter0 }}"{% if job.id == 0 %} class=" active{% endif %}"><img src="{% static 'images/deloitte.jpg' %}" alt="" /> </li>
+            <li data-target="#jobCarousel" data-slide-to="{{ forloop.counter0 }}"{% if job.id == 0 %} class=" active{% endif %}"><img src="{% static job.company_logo %}" alt="" /> </li>
         {% endfor %}
     </ol>
 
