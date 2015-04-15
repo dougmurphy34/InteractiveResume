@@ -12,23 +12,23 @@ def create_job(company_name, job_title):
 
 class JobListViewTests(TestCase):
     def test_job_list_with_no_jobs(self):
-        # TODO 5): custom error message.  There should never be zero jobs in the db.
-        response = self.client.get(reverse('job_list')) #as named in urls.py
+        response = self.client.get(reverse('job_list'))  # as named in urls.py
         self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "No jobs found in database")
 
     def test_job_list_with_one_job(self):
         create_job("Some Place", "Worker Bee")
         response = self.client.get(reverse('job_list'))
         self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Some Place")
 
 
 class JobDetailViewTests(TestCase):
-    #TODO: This correctly does not return a 200 (because no job selected), but I need to handle this error gracefully
-
-    """ def test_job_detail_with_no_jobs(self):
+    def test_job_detail_with_no_jobs(self):
         response = self.client.get(reverse('job_detail', args=(1,)))
         self.assertEqual(response.status_code, 200)
-    """
+        self.assertContains(response, "seem to exist")
+
     def test_job_list_with_one_job(self):
         local_job = create_job("Some Job", "Worker Bee")
         response = self.client.get(reverse('job_detail', args=(local_job.id,)))

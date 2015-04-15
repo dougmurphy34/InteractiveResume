@@ -8,6 +8,8 @@ class Job(models.Model):
     end_date = models.DateField(blank=True, null=True)
     job_title = models.CharField(max_length=50)
     job_description = models.TextField(null=True)
+    # company_logo returns a string that, when passed to "static" in an image src, will load the logo.
+    # Usage: <img src="{% static job.company_logo %}" />
     company_logo = models.CharField(max_length=50, null=True)
 
     def __unicode__(self):
@@ -38,6 +40,8 @@ class Job(models.Model):
             return final_answer
 
     def date_range(self):
+        # strftime('%B') means string format the time, using full month name based on locale.  See:
+        # http://php.net/manual/en/function.strftime.php
         range_string = self.start_date.strftime('%B') + " " + str(self.start_date.year)
 
         if self.still_employed():
@@ -62,6 +66,7 @@ class SkillType(models.Model):
 class Skill(models.Model):
     skill_name = models.CharField(max_length=50)
     skill_type = models.ForeignKey(SkillType)
+    skill_logo = models.CharField(max_length=50, null=True)
 
     def __unicode__(self):
         return self.skill_name

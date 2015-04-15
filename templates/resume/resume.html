@@ -61,16 +61,21 @@
             position: relative;
         }
 
+        #jobCarousel .carousel-inner {
+            width: 85%;
+            margin: auto;
+        }
+
         .inlineLogo {
             height: 40px;
-            border-radius: 10px;
+            border-radius: 7px;
         }
 
     </style>
 
 {% endblock page_scripts %}
 
-<!--  TODO: For carousel, swap out background images of different sizes based on media queries (size of screen) -->
+<!--  For carousel, swap out background images of different sizes based on media queries (size of screen) -->
 
 {% block body_block %}
 
@@ -80,8 +85,7 @@
     <div class="carousel-outer">
         <div class="carousel-inner" role="listbox">
             {% for job in joblist %}
-                <!-- TODO 6): Pull style off of looped Div and into <style> block or .css -->
-                <div class="item{% if job.pk == 1 %} active{% endif %}" id="slide{{ forloop.counter0 }}" style="width: 85%; margin: auto;">
+                <div class="item{% if job.pk == 1 %} active{% endif %}" id="slide{{ forloop.counter0 }}">
                     <table>
                         <tbody>
                             <tr>
