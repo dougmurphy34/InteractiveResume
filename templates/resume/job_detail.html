@@ -1,5 +1,7 @@
 {% extends 'resume/base.html' %}
 
+{% load static %}
+
 {% block angular_bootstrap %}
 
         {% include 'irf/angular_subtemplate.html' %}
@@ -23,6 +25,7 @@
 {% endblock %}
 
 {% block body_block %}
+    <h1>This will be my "show off <img src="{% static 'images/angular.jpg' %}" style="width: 30px;"/>ngular.js" page.  Obviously it is not complete.</h1>
     <h2>Job detail page for my time at: {{ job.company_name }}</h2>
     <h4><a href="{% url 'resume.views.all_my_jobs' %}">return to joblist</a></h4>
     <div ng-app="angularApp" class="container" ng-init="defaultName='Igor'"><!-- Giving this ng-controller=mainController to match the script above breaks it.  Why? -->
