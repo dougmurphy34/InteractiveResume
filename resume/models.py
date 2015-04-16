@@ -51,6 +51,9 @@ class Job(models.Model):
 
         return range_string
 
+    def related_skills(self):
+        return Skill.objects.filter(jobskilljunction__job=self.pk)
+
 
 class Accomplishment(models.Model):
     job = models.ForeignKey(Job)

@@ -40,6 +40,11 @@ footer h4 {
     width: 80%;
 }
 
+.tiny-logo {
+    width: 30px;
+    height: 30px;
+}
+
 .welcomeText {
     font-size: 1.3em;
 

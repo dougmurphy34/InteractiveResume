@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from resume.models import Job
+from resume.models import Job, Skill
 
 '''
 nbar is passed in context to tell the Boostrap Navigation bar in base.py which menu item should be highlighted as "active"
@@ -46,7 +46,15 @@ def contact(request):
 
 def portfolio(request):
     template = 'resume/portfolio.html'
-    context = {'nbar': "portfolio"}
+
+    # This try/except is needed because the unit test on the view has no HTTP_USER_AGENT and throws an exception
+    # This seems like a dumb answer (should I write a fake one in the test to handle this?)
+    try:
+        useragentstring = request.META['HTTP_USER_AGENT']
+    except:
+        useragentstring = ''
+
+    context = {'nbar': "portfolio", 'browser': useragentstring}
 
     return render(request, template, context)
 
