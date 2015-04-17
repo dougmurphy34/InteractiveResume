@@ -1,8 +1,15 @@
 {% extends 'resume/base.html' %}
+{% load static %}
 
 {% block body_block %}
 
     <div class="container">
+        <section id="introduction">
+            <img src="{% static 'DougFace2.JPG' %}" class="img-rounded front-page-image" />
+            <p>I'm a Django developer looking for projects.  I've got 7 years of experience writing software for the web, and another five managing people.  My preferred tech stack is Linux-Python-Django-postgresql, but I've worked in nearly everything and adapt quickly.</p>
+            <p>I hold a degree in Business Administration (with honors) from Boston College, and a certificate in Green Energy Management from San Diego State.  I'm always learning, including recently completing a course in Bioinformatic Algorithms at <a href="https://stepic.org/">Stepic</a>.</p>
+            <p>I've <a href="http://douganddaniele.tumblr.com/page/3">lived on six continents</a>, but I have happily settled in San Diego.  I love building things, especially in service of social good.  I'm into beach volleyball, acoustic guitar, and tabletop gaming.</p>
+        </section>
         <h3>I'm looking for contract web development, or the perfect full-time fit.  Reach out to me here:</h3>
         <address>
             <h4><span class="glyphicon glyphicon-envelope"></span> <a href="mailto:fakeemail@fakeland.com">Doug's fake email</a></h4>

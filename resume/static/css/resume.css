@@ -18,6 +18,10 @@ h2 {
     color: white;
 }
 
+p {
+    font-size: 1.2em;
+}
+
 h3:first-letter {
 /*CSS3 suggests a double-colon to distinguish this pseudo-element from a pseudo-class,
         but single-colon maintains compatibility with old browsers*/
@@ -53,7 +57,7 @@ footer h4 {
     width:120px;
     -webkit-transform: rotate(90deg);
     transform: rotate(90deg);
-    margin: 10px;
+    margin: 20px 10px;
     float: left;
     /*padding-right: 10px;*/
 }
