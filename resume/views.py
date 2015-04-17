@@ -39,7 +39,7 @@ def job_detail(request, job_id):
 
 def contact(request):
     template = 'irf/contact.html'
-    context = {'nbar': "contact"}
+    context = {'nbar': "about"}
 
     return render(request, template, context)
 

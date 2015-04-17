@@ -57,6 +57,7 @@ class Job(models.Model):
 
 class Accomplishment(models.Model):
     job = models.ForeignKey(Job)
+    accomplishment_text = models.CharField(max_length=200)
 
 
 class SkillType(models.Model):

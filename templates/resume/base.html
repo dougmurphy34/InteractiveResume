@@ -72,10 +72,9 @@
         <div class="collapse navbar-collapse navbar-responsive-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
             <li{% if nbar == "index" %} class="active"{% endif %}><a href="{% url 'resume.views.index' %}">Welcome</a></li>
-            <li{% if nbar == "resume" %} class="active"{% endif %}><a href="{% url 'resume.views.resume' %}"><span class="glyphicon glyphicon-book"></span> Resume</a></li>
             <li{% if nbar == "all_my_jobs" %} class="active"{% endif %}><a href="{% url 'resume.views.all_my_jobs' %}"><span class="glyphicon glyphicon-briefcase"></span> Work Summary</a></li>
             <li{% if nbar == "portfolio" %} class="active"{% endif %}><a href="{% url 'resume.views.portfolio' %}"><span class="glyphicon glyphicon-blackboard"></span> Portfolio</a></li>
-            <li{% if nbar == "contact" %} class="active"{% endif %}><a href="{% url 'resume.views.contact' %}"><span class="glyphicon glyphicon-envelope"></span> Contact</a></li>
+            <li{% if nbar == "about" %} class="active"{% endif %}><a href="{% url 'resume.views.contact' %}"><span class="glyphicon glyphicon-envelope"></span> About</a></li>
           </ul>
         </div>
       </div>

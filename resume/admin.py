@@ -1,9 +1,13 @@
 from django.contrib import admin
-from resume.models import Job, Skill, SkillType, JobSkillJunction
+from resume.models import Job, Skill, SkillType, JobSkillJunction, Accomplishment
 
 
 #This could all be done with decorators on the models page, see:
 #https://docs.djangoproject.com/en/1.7/ref/contrib/admin/
+
+class AccomplishmentsInline(admin.StackedInline):
+    model = Accomplishment
+    extra = 3
 
 class JobAdmin(admin.ModelAdmin):
     # end_date isn't bold in the admin view because it's not required - it can be null
@@ -15,6 +19,7 @@ class JobAdmin(admin.ModelAdmin):
 
     ]
 
+    inlines = [AccomplishmentsInline]
     list_display = ('company_name', 'start_date', 'end_date')
 
 
