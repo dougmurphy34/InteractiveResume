@@ -2,7 +2,7 @@ __author__ = 'doug'
 
 from base import *
 
-DEBUG = False
+DEBUG = True
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
