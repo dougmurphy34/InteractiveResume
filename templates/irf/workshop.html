@@ -1,0 +1,49 @@
+{% extends 'resume/base.html' %}
+
+{% load static %}
+
+{% block angular_bootstrap %}
+
+        {% include 'irf/angular_subtemplate.html' %}
+
+{% endblock angular_bootstrap %}
+
+{% block page_scripts %}
+    <script>
+        // create our angular app and inject ui.bootstrap
+        var angularApp = angular.module('angularApp', ['ui.bootstrap']);
+        angularApp.controller("MyCtrl", function($scope) {
+            $scope.friends = [
+                { name: "Peter",   age: 20 },
+                { name: "Pablo",   age: 55 },
+                { name: "Linda",   age: 20 },
+                { name: "Marta",   age: 37 },
+                { name: "Othello", age: 20 },
+                { name: "Markus",  age: 32 }
+            ];
+
+            $scope.jobs_from_django = [
+                {% for job in alljobs %}
+                    { name: "{{ job.company_name }}", start_date: "{{ job.start_date }}" },
+                {% endfor %}
+
+            ];
+});
+    </script>
+{% endblock %}
+
+{% block body_block %}
+    <div ng-app="angularApp">
+        <div ng-controller="MyCtrl">
+            <form class="form-inline">
+                <input ng-model="query" type="text"
+                placeholder="Filter by" autofocus>
+            </form>
+            <ul ng-repeat="job in jobs_from_django | filter:query | orderBy: 'name' ">
+                <li><h4>{% verbatim %}{{ job.name }} - {{job.start_date}}{% endverbatim %}</h4></li>
+            </ul>
+        </div>
+    </div>
+
+
+{% endblock %}
