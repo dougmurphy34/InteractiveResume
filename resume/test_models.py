@@ -18,7 +18,7 @@ class JobTestCase(TestCase):
 
     def test_time_of_service_calculation(self):
         this_job = Job.objects.get(company_name="Floodbat")
-        self.assertEqual(this_job.service_time(), 3)
+        self.assertEqual(this_job.service_time(), "3 Years")
 
     def test_still_employed_function(self):
         this_job = Job.objects.get(company_name="Floodbat")

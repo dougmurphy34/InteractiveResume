@@ -35,9 +35,11 @@ class Job(models.Model):
         final_answer = int(years_since.days / 365.25) + round_up
 
         if final_answer == 0:
-            return "< 1"
+            return "< 1 Year"
+        elif final_answer == 1:
+            return str(final_answer) + " Year"
         else:
-            return final_answer
+            return str(final_answer) + " Years"
 
     def date_range(self):
         # strftime('%B') means string format the time, using full month name based on locale.  See:
@@ -70,6 +72,10 @@ class SkillType(models.Model):
 class Skill(models.Model):
     skill_name = models.CharField(max_length=50)
     skill_type = models.ForeignKey(SkillType)
+    #  should skill_logo be of type models.ImageField, not models.CharField?
+    #  Only advantage seems to be default height/width and validation that link points to an image, which is only
+    #       useful for user-generated content
+    #  https://docs.djangoproject.com/en/1.8/ref/models/fields/
     skill_logo = models.CharField(max_length=50, null=True)
 
     def __unicode__(self):
