@@ -25,7 +25,8 @@
                     {% autoescape off %}
                     {company_name: "{{ job.company_name }}", job_title: "{{ job.job_title }}",
                     job_description: "{{ job.job_description }}", service_time: "{{ job.service_time }}",
-                    date_range: "{{ job.date_range }}", skill_icons: [
+                    date_range: "{{ job.date_range }}", detail_link: "{% url 'job_detail' job.id%}",
+                    skill_icons: [
                         {% for skill in job.related_skills %}
                             "{% static skill.skill_logo %}",
                         {% endfor %}
@@ -87,7 +88,7 @@
 {% block body_block %}
 
     <div class="container" ng-app="sorting_app" ng-controller="sort_controller">
-        <h3>Angular reactive table.  Filter data: </h3>
+        <h6>Filter powered by <img src="{% static 'images/angular.jpg' %}" style="width: 30px;"/>ngular.js: </h6>
 
         <div class="form-group">
             <input type="text" class="form-inline localPad" autofocus ng-model="companyFilter.company_name" placeholder="by Company Name"/>
@@ -109,14 +110,14 @@
                     <th>Company</th>
                     <th>Position</th>
                     <th>Description</th>
-                    <th>Skills Used</th>
+                    <th class="skillColumn">Skills Used</th>
                     <th>Service Time</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="job in jobs_from_django | filter:skillFilter | filter: companyFilter ">
                     <td>
-                        {% verbatim %}{{ job.company_name }}{% endverbatim %}
+                        {% verbatim %}<a href="{{ job.detail_link }}" title="See job details">{{ job.company_name }}</a>{% endverbatim %}
                     </td>
                     <td>
                         {% verbatim %}{{ job.job_title }}{% endverbatim %}
@@ -124,7 +125,7 @@
                     <td>
                         {% verbatim %}{{ job.job_description }}{% endverbatim %}
                     </td>
-                    <td>
+                    <td class="skillColumn">
                         {% verbatim %}
                         <span ng-repeat="icon in job.skill_icons">
                             <img src="{{ icon }}" class="tiny-logo" alt="skill_logo"/>

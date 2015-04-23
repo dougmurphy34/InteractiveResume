@@ -56,10 +56,16 @@ class Job(models.Model):
     def related_skills(self):
         return Skill.objects.filter(jobskilljunction__job=self.pk)
 
+    def related_accomplishments(self):
+        return Accomplishment.objects.filter(job=self.pk)
+
 
 class Accomplishment(models.Model):
     job = models.ForeignKey(Job)
     accomplishment_text = models.CharField(max_length=200)
+
+    def __unicode__(self):
+        return self.accomplishment_text
 
 
 class SkillType(models.Model):

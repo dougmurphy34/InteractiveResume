@@ -2,67 +2,48 @@
 
 {% load static %}
 
-{% block angular_bootstrap %}
 
-        {% include 'irf/angular_subtemplate.html' %}
-
-{% endblock angular_bootstrap %}
-
-{% block page_scripts %}
-    <script>
-        // create our angular app and inject ui.bootstrap
-        var angularApp = angular.module('angularApp', ['ui.bootstrap']);
-        angularApp.controller('MainController', function($scope) {
-
-        // define yourName variable and initialize to blank
-            $scope.yourName = "Frida";
-            $scope.feelings = $scope.yourName;
-            $scope.originalName = "Billson";
-            //$scope.bigData.lunch = true;
-
-        });
-    </script>
-{% endblock %}
 
 {% block body_block %}
-    <h1>This will be my "show off <img src="{% static 'images/angular.jpg' %}" style="width: 30px;"/>ngular.js" page.  Obviously it is not complete.</h1>
-    <h2>Job detail page for my time at: {{ job.company_name }}</h2>
-    <h4><a href="{% url 'resume.views.all_my_jobs' %}">return to joblist</a></h4>
-    <div ng-app="angularApp" class="container" ng-init="defaultName='Igor'"><!-- Giving this ng-controller=mainController to match the script above breaks it.  Why? -->
-        <label>Name:</label>
-        <input type="text" ng-model="yourName" placeholder="Enter a name here">
-
-        <h1>Hello, {% verbatim %}{{yourName}}{% endverbatim %}!</h1>
-        <hr>
-        <label>Other stuff:</label>
-        <input type="text" ng-model="feelings" placeholder="Your feelings">
-
-        <h1>I understand you are feeling {% verbatim %}{{ feelings }}{% endverbatim %}</h1>
-        <hr>
-        <h2 ng-controller="MainController">Billson's name, according to the controller, is: <span ng-bind="originalName"></span></h2>
-        <h2>Igor's name, according to ng-init, is: <span ng-bind="defaultName"></span></h2>
+    <h3><span class="label label-info"><span class="glyphicon glyphicon-backward"></span> <a href="{% url 'resume.views.all_my_jobs' %}">return to joblist</a></span></h3>
 
 
-         <div class="btn-group" data-toggle="buttons">
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1><img src="{% static job.company_logo %}" class="medium-logo"/> {{ job.company_name }}<span style="float: right;">{{ job.job_title }}</span></h1>
 
-            <label class="btn btn-primary" ng-model="bigData.breakfast" btn-checkbox>
-              Breakfast
-            </label>
+            </div>
+            <div class="panel-body">
+                <p>{{ job.job_description }}</p>
+                <ul>
+                    {% for thing in job.related_accomplishments %}
+                        <li><h4>{{ thing.accomplishment_text }}</h4></li>
+                    {% endfor %}
+                </ul>
 
-            <label class="btn btn-primary" ng-model="bigData.lunch" btn-checkbox>
-              Lunch
-            </label>
+                <div class="row">
+                    <div class="col-lg-6 col-med-6 col-sm-6">
+                        <div class="panel panel-default image-panel">
+                            <h6>(Cool images will go here - me with awards, picture of building, etc.)</h6>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-med-6 col-sm-6">
+                        <div class="panel panel-default logo-panel">
 
-            <label class="btn btn-primary" ng-model="bigData.dinner" btn-checkbox>
-              Dinner
-            </label>
+                                {% for skill in job.related_skills %}
+                                   <img src="{% static skill.skill_logo %}" class="medium-logo"/>
+                                {% endfor %}
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
 
         </div>
-
-
     </div>
-
-
 
 
 

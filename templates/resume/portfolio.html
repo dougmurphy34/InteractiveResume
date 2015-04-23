@@ -1,17 +1,23 @@
 {% extends 'resume/base.html' %}
 
+{% load static %}
+
 {% block body_block %}
 <div class="container">
-    <h1>The source code for this project is publicly available on GitHub, <a href="https://github.com/dougmurphy34/InteractiveResume">here</a>.</h1>
-
-    <h1>(Obviously, this page is not complete)</h1>
-
-    <h3>You are using {{ browser }} as your browser.</h3>
+    <p>
+        This site uses <img src="{% static 'images/bootstrap.png' %}" class="tiny-logo"/>ootstrap, a mobile-first web framework.  Try making your browser very narrow and watch the top nagivation menu.  It changes to accomodate your situation.
+    </p>
 
     <h2>Look how impressive this tech wizardry is!  Like, here's a circle:</h2>
     <div id="circleDiv" style="border-radius: 50px; background: green; width: 100px; height: 100px; text-align: center;">
         <h4 style="position: relative; top:40px;">I am a circle!</h4>
     </div>
+
+    <h3>The source code for this project is publicly available on GitHub, <a href="https://github.com/dougmurphy34/InteractiveResume">here</a>.</h3>
+
+    <h6>You are using {{ browser }} as your browser.</h6>
+
+
 </div>
 
 
