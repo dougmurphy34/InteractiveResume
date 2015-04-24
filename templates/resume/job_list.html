@@ -2,12 +2,6 @@
 
 {% load static %}
 
-{% block angular_bootstrap %}
-
-        {% include 'irf/angular_subtemplate.html' %}
-
-{% endblock angular_bootstrap %}
-
 {% block page_scripts %}
 
     <style>
@@ -17,8 +11,7 @@
     </style>
 
     <script>
-        var sorting_app = angular.module('sorting_app', ['ui.bootstrap']);
-        sorting_app.controller("sort_controller", function($scope){
+        resume_app.controller("sort_controller", function($scope){
             //Hand off data from middleware (Django) to browser (Angular)
             $scope.jobs_from_django = [
                 {% for job in joblist %}
@@ -87,7 +80,7 @@
 
 {% block body_block %}
 
-    <div class="container" ng-app="sorting_app" ng-controller="sort_controller">
+    <div class="container" ng-controller="sort_controller">
         <h6>Filter powered by <img src="{% static 'images/angular.jpg' %}" style="width: 30px;"/>ngular.js: </h6>
 
         <div class="form-group">

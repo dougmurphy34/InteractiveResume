@@ -2,11 +2,24 @@
 
 {% load static %}
 
+{% block page_scripts %}
+    <link href="{% static 'css/portfolio.css' %}" rel="stylesheet"/>
+{% endblock page_scripts %}
+
 {% block body_block %}
 <div class="container">
     <p>
         This site uses <img src="{% static 'images/bootstrap.png' %}" class="tiny-logo"/>ootstrap, a mobile-first web framework.  Try making your browser very narrow and watch the top nagivation menu.  It changes to accomodate your situation.
     </p>
+
+
+    This device information also changes as you resize your screen.  Go ahead, try to prove it wrong:
+    <ul>
+        <li class="handheld">You are using a hand held device, like a phone.</li>
+        <li class="smallscreen">You are using a small screen (no more than 800 pixels wide).</li>
+        <li class="widescreen">Your screen is wider than it is tall.</li>
+        <li class="tallscreen">Your screen is taller than it is wide.</li>
+    </ul>
 
     <h2>Look how impressive this tech wizardry is!  Like, here's a circle:</h2>
     <div id="circleDiv" style="border-radius: 50px; background: green; width: 100px; height: 100px; text-align: center;">

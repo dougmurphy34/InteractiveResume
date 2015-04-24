@@ -1,12 +1,8 @@
- <!-- Load Angular.js script, Bootstrap CSS,
-        and ui-bootstrap.js that lets the two work together without jquery -->
+{% load static %}
+         <!-- This page does not use angular, so we load classic Boostrap and jQuery -->
 
-        {% load static %}
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Bootstrap  -->
+        <!-- ORDER IS IMPORTANT -->
         <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-        <!-- Angular.js -->
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-        <!-- ui-bootstrap (for Angular/bootstrap compatibility; incompatible with jQuery -->
-        <script src="{% static 'js/ui-bootstrap-tpls-0.12.1.min.js' %}"></script>
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>

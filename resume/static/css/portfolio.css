@@ -1,0 +1,27 @@
+p {
+    color: orange;
+}
+
+@media not handheld {
+    .handheld {
+        display: none;
+    }
+}
+
+@media (min-width: 800px) {
+    .smallscreen {
+        display: none;
+    }
+}
+
+@media all and (orientation: portrait) {
+    .widescreen {
+        display: none;
+    }
+}
+
+@media all and (orientation: landscape) {
+    .tallscreen {
+        display: none;
+    }
+}
