@@ -11,6 +11,8 @@ class Job(models.Model):
     # company_logo returns a string that, when passed to "static" in an image src, will load the logo.
     # Usage: <img src="{% static job.company_logo %}" />
     company_logo = models.CharField(max_length=50, null=True)
+    splash_image = models.CharField(max_length=50, null=True)
+    splash_image_caption = models.CharField(max_length=100, null=True)
 
     def __unicode__(self):
         return str(self.company_name + " - " + self.job_title)

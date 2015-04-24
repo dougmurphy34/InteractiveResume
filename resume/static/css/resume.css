@@ -1,18 +1,7 @@
 /*full-site font from Google*/
 body {
-    font-family: "Open Sans Condensed", arial, helvetica, serif;
+    font-family: "Ubuntu Condensed", sans-serif;
 }
-
-/* Not using this any more.  Delete?
-h1 {
-    color: rgba(99,0,0,1);
-}
-
-h1 + p {
-    font-weight: bold;
-}
-
-*/
 
 /* White-colored font with shadow, for overlaying on images (like Welcome page Jumbotron */
 h2 {
@@ -25,7 +14,7 @@ h2 {
 
 /* Enlarge text intended to be read as prose, but not in (for instance) datagrids */
 p {
-    font-size: 1.3em;
+    font-size: 1.2em;
 }
 
 
@@ -56,8 +45,20 @@ footer h4 {
     width: 90px;
 }
 
-.imagePanel {
+.date-range {
+    text-align: right;
+}
 
+.image-panel {
+    padding: 20px;
+    text-align: center;
+    box-shadow: 8px 8px 10px #8888AA;
+    margin: auto;
+}
+
+.image-panel img {
+
+    max-width: 300px;
 }
 
 /* for Job Detail page, to center and pad logo box.  Box Shadow for fun. */
@@ -90,6 +91,7 @@ footer h4 {
     /*padding-right: 10px;*/
 }
 
+/* to make space under the navbar (and prevent content overlap except when scrolling */
 #menuSpacerDiv {
                 margin-top: 60px;
             }

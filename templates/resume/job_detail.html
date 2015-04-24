@@ -15,21 +15,31 @@
 
             </div>
             <div class="panel-body">
+                <h5 class="date-range">{{ job.date_range }}</h5>
+
                 <p>{{ job.job_description }}</p>
+
                 <ul>
                     {% for thing in job.related_accomplishments %}
                         <li><h4>{{ thing.accomplishment_text }}</h4></li>
                     {% endfor %}
                 </ul>
+                <div id="menuSpacerDiv"></div>
+
 
                 <div class="row">
                     <div class="col-lg-6 col-med-6 col-sm-6">
+                        {% if job.splash_image %}
                         <div class="panel panel-default image-panel">
-                            <h6>(Cool images will go here - me with awards, picture of building, etc.)</h6>
+                            <figure>
+                                <img src="{% static job.splash_image %}" alt="{{ job }} image"/>
+                                <figcaption>{{ job.splash_image_caption }}</figcaption>
+                            </figure>
                         </div>
+                        {% endif %}
                     </div>
                     <div class="col-lg-6 col-med-6 col-sm-6">
-                        <div class="panel panel-default logo-panel">
+                        <div class="panel panel-default logo-panel" {% if not job.related_skills %}style="visibility:hidden;"{% endif %}>
 
                                 {% for skill in job.related_skills %}
                                    <img src="{% static skill.skill_logo %}" class="medium-logo"/>

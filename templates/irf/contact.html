@@ -1,19 +1,78 @@
 {% extends 'resume/base.html' %}
 {% load static %}
 
+{% block page_scripts %}
+
+    <style>
+
+        section {
+
+        }
+
+        section > div {
+            margin: 20px;
+            background-color: rgba(000,080,120,0.2)
+        }
+
+        .about-images {
+            margin: 0 10px;
+        }
+
+        #img1 {
+            float:left;
+            width: 130px;
+        }
+
+        #img2 {
+            float:right;
+            width: 160px;
+        }
+
+        #img3 {
+            float:left;
+            width: 110px;
+            transform: rotate(-5deg)
+        }
+
+
+    </style>
+
+{% endblock page_scripts %}
+
 {% block body_block %}
 
     <div class="container">
+
+    <h1>Who is Doug Murphy?</h1>
         <section id="introduction">
-            <img src="{% static 'DougFace2.JPG' %}" class="img-rounded front-page-image" />
-            <p>I'm a Django developer looking for projects.  I've got 7 years of experience writing software for the web, and another five managing people.  My preferred tech stack is Linux-Python-Django-postgresql, but I've worked in nearly everything and adapt quickly.</p>
-            <p>I hold a degree in Business Administration (with honors) from Boston College, and a certificate in Green Energy Management from San Diego State.  I'm always learning, including recently completing a course in Bioinformatic Algorithms at <a href="https://stepic.org/">Stepic</a>.</p>
-            <p>I've <a href="http://douganddaniele.tumblr.com/page/3">lived on six continents</a>, but I have happily settled in San Diego.  I love building things, especially in service of social good.  I'm into beach volleyball, acoustic guitar, and tabletop gaming.</p>
+            <div class="row">
+                <img src="{% static 'images/potatochiprock.jpg' %}" id="img1" class="about-images img-thumbnail" />
+                <p>
+                    I'm a Django developer looking for projects.  I have 7 years of experience writing software for the web, and another five managing people.  My preferred tech stack is Linux-Python-Django-postgresql, but I've worked with many web technologies and adapt quickly.
+                </p>
+            </div>
+            <div class="row">
+                <p>
+                    <img class="about-images img-thumbnail" id="img2" src="{% static 'images/gassonhall.jpg' %}"/>
+                    I hold a degree in Business Administration (with honors) from Boston College, and a certificate in Green Energy Management from San Diego State.  I'm always learning, including recently completing a course in Bioinformatic Algorithms at <a href="https://stepic.org/">Stepic</a>.
+                </p>
+            </div>
+            <div class="row">
+                <p>
+                    <img id="img3" class="about-images img-thumbnail" src="{% static 'images/angkormonkey.jpg' %}"/>
+                    I've <a href="http://douganddaniele.tumblr.com/page/3">lived on six continents</a>, but I have happily settled in San Diego.  I love building things, especially in service of social good.  I enjoy beach volleyball, acoustic guitar, and tabletop gaming.
+                </p>
+            </div>
+            <div class="row">
+                <h4>My primary interest is in <em>contract web development</em>, but I would consider the perfect full-time fit.  Reach out to me here:</h4>
+                <address>
+                    <h4><span class="glyphicon glyphicon-envelope"></span> <a href="mailto:fakeemail@fakeland.com">Doug's fake email</a></h4>
+                </address>
+            </div>
+
+
         </section>
-        <h3>I'm looking for contract web development, or the perfect full-time fit.  Reach out to me here:</h3>
-        <address>
-            <h4><span class="glyphicon glyphicon-envelope"></span> <a href="mailto:fakeemail@fakeland.com">Doug's fake email</a></h4>
-        </address>
+
     </div>
 
 

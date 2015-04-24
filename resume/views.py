@@ -15,7 +15,7 @@ def index(request):
 
 
 def all_my_jobs(request):  # doesn't match template name, should probably rename this view
-    jobs = Job.objects.get_queryset().order_by('start_date')
+    jobs = Job.objects.get_queryset().order_by('-start_date')
     skills = Skill.objects.all().exclude(skill_logo__exact=None)
 
     if len(jobs) == 0:
