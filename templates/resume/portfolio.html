@@ -4,24 +4,44 @@
 
 {% block page_scripts %}
     <link href="{% static 'css/portfolio.css' %}" rel="stylesheet"/>
+
+    <script>
+
+        resume_app.controller('ExampleController', ['$scope', function($scope) {
+            $scope.color = {
+                name: 'blue'
+            };
+            $scope.specialValue = {
+                "id": "12345",
+                "value": "green"
+            };
+        }]);
+    </script>
+
 {% endblock page_scripts %}
 
 {% block body_block %}
 <div class="container">
     <p>
-        This site uses <img src="{% static 'images/bootstrap.png' %}" class="tiny-logo"/>ootstrap, a mobile-first web framework.  Try making your browser very narrow and watch the top nagivation menu.  It changes to accomodate your situation.
+        I believe the best websites are responsive websites.  I use <img src="{% static 'images/bootstrap.png' %}" class="tiny-logo"/>ootstrap to
+        make this site look as good on a phone as it does on a computer.  Try making your browser very narrow and watch the top nagivation menu.
+        It changes to accomodate your situation.
     </p>
 
 
-    This device information also changes as you resize your screen.  Go ahead, try to prove it wrong:
+    <p><img src="{% static 'images/bootstrap.png' %}" class="tiny-logo"/>ootstrap uses CSS media queries track your device information as it changes.  Try it out:</p>
     <ul>
-        <li class="handheld">You are using a hand held device, like a phone.</li>
-        <li class="smallscreen">You are using a small screen (no more than 800 pixels wide).</li>
-        <li class="widescreen">Your screen is wider than it is tall.</li>
-        <li class="tallscreen">Your screen is taller than it is wide.</li>
+        <li class="smallscreen">You are using a <span class="small">small</span> browser window (< 640 pixels wide).</li>
+        <li class="mediumscreen">You are using a <span class="medium">medium</span> browser window (640 to 1440 pixels wide).</li>
+        <li class="largescreen">You are using a <span class="large">large</span> browser window (>1440 pixels wide).</li>
+        <li class="widescreen">This window is <span class="wider">wider</span> than it is <span class="taller">tall</span>.</li>
+        <li class="tallscreen">This window is <span class="taller">taller</span> than it is <span class="wider">wide</span>.</li>
     </ul>
 
-    <h2>Look how impressive this tech wizardry is!  Like, here's a circle:</h2>
+    <p>Responsive websites don't make users wait for server postbacks.  By using <img src="{% static 'images/angular.jpg' %}" class="tiny-logo">ngularJS,
+        I can give users instant responses to their actions, like so:
+    </p>
+
     <div id="circleDiv" style="border-radius: 50px; background: green; width: 100px; height: 100px; text-align: center;">
         <h4 style="position: relative; top:40px;">I am a circle!</h4>
     </div>
@@ -30,6 +50,22 @@
 
     <h6>You are using {{ browser }} as your browser.</h6>
 
+    <form name="myForm" ng-controller="ExampleController">
+      <label>
+        <input type="radio" ng-model="color.name" value="red">
+        Red
+      </label><br/>
+      <label>
+        <input type="radio" ng-model="color.name" ng-value="specialValue">
+        Green
+      </label><br/>
+      <label>
+        <input type="radio" ng-model="color.name" value="blue">
+        Blue
+      </label><br/>
+      <tt>color = {% verbatim %}{{ color.name | json }}{% endverbatim %}</tt><br/>
+     </form>
+         Note that `ng-value="specialValue"` sets radio item's value to be the value of `$scope.specialValue`.
 
 </div>
 

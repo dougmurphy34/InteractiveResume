@@ -40,7 +40,6 @@
 
             $scope.skillIncludes = [];
 
-
             $scope.includeSkill = function(skilly) {
                 var includedIndex = $scope.skillIncludes.indexOf(skilly);
                 if (includedIndex > -1) {
@@ -50,7 +49,7 @@
                     $scope.skillIncludes.push(skilly)
                 }
             };
-/**/
+
             $scope.skillFilter = function(job) {
                 if ($scope.skillIncludes.length == 0) {
                     return job;
@@ -60,17 +59,7 @@
                        if ($scope.skillIncludes.indexOf(job.skills[iterator]) > -1) return job;
                     }
                 }
-
-                //return job; temp obviously - returns all records
-
             };
-
-            $scope.scrippsFilter = function(job) {
-                if (job.company_name == "The Scripps Research Institute") {
-                    return job;
-                }
-            }
-
         });
     </script>
 
@@ -80,7 +69,7 @@
 
 {% block body_block %}
 
-    <div class="container" ng-controller="sort_controller">
+    <div class="container-fluid" ng-controller="sort_controller">
         <h6>Filter powered by <img src="{% static 'images/angular.jpg' %}" style="width: 30px;"/>ngular.js: </h6>
 
         <div class="form-group">
