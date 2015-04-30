@@ -17,6 +17,10 @@ p {
     font-size: 1.2em;
 }
 
+img {
+    /* This apparently makes image resizes via height/width property not look horrible in Internet Explorer. */
+    -ms-interpolation-mode: bicubic;
+}
 
 h1:first-letter {
 /*CSS3 suggests a double-colon to distinguish this pseudo-element from a pseudo-class,

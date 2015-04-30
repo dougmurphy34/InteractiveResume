@@ -5,10 +5,53 @@
 
     <style>
 
-        section {
-
+        #introduction {
+            margin: auto;
         }
 
+        .carousel-caption {
+            background: rgba(0, 0, 10, 0.5)
+        }
+
+        @media (max-width: 640px) {
+            #carouselContainer {
+                width: 300px;
+            }
+
+            .carousel-caption {
+                font-size: 0.7em;
+            }
+        }
+
+        @media (min-width: 639px) {
+            #carouselContainer {
+                width: 600px;
+            }
+
+            .carousel-caption {
+                font-size: 1.2em;
+            }
+        }
+
+
+        /* Borrowed carousel formatting tricks */
+        #slides_control > div{
+            height: 300px;
+        }
+        img{
+            margin:auto;
+            width: 600px;
+            overflow: hidden !important;
+        }
+        #slides_control {
+            position:absolute;
+            width: 600px;
+            left:50%;
+            top:20px;
+            margin-left:-300px;
+        }
+
+        /* CSS for pre-carousel
         section > div {
             margin: 20px;
             background-color: rgba(000,080,120,0.2)
@@ -29,14 +72,29 @@
         }
 
         #img3 {
-            display: inline-block; /* Because webkit-based browsers ignore -webkit-transform on inline elements */
+            display: inline-block; ((( Because webkit-based browsers ignore -webkit-transform on inline elements )))
             float:left;
             width: 110px;
             transform: rotate(-5deg)
         }
-
+        */
 
     </style>
+
+    <!-- carousel controller -->
+
+    <script>
+    resume_app.controller('carouselController', function($scope) {
+        $scope.myInterval = 0;
+        var slides = $scope.slides = [
+            {image: "{% static 'images/potatochiprock-1.6-1.jpg' %}", text: "I'm a Django developer looking for projects.  I have 7 years of experience writing software for the web, and another five managing people.  My preferred tech stack is Linux-Python-Django-postgresql, but I've worked with many web technologies and adapt quickly."},
+            {image: "{% static 'images/gassonhall-1.6-1.jpg' %}", text: "I hold a degree in Business Administration (with honors) from Boston College, and a certificate in Green Energy Management from San Diego State.  I'm always learning, including recently completinga course in Bioinformatic Algorithms at Stepic."},
+            {image: "{% static 'images/angkormonkey-1.6-1.jpg' %}", text: "I've lived on six continents, but I have happily settled in San Diego.  I love building things, especially in service of social good.  I enjoy beach volleyball, acoustic guitar, and tabletop gaming."},
+            {image: "{% static 'images/croppedslanteddesktop-1.6-1.png' %}", text: "My primary interest is in contract web development, but I would consider the perfect full-time fit.  Reach out to me at fake@email.com"}
+        ];
+
+    })
+    </script>
 
 {% endblock page_scripts %}
 
@@ -46,6 +104,7 @@
 
     <h1>Who is Doug Murphy?</h1>
         <section id="introduction">
+            <!-- old way
             <div class="row">
                 <img src="{% static 'images/potatochiprock.jpg' %}" id="img1" class="about-images img-thumbnail" />
                 <p>
@@ -55,24 +114,48 @@
             <div class="row">
                 <p>
                     <img class="about-images img-thumbnail" id="img2" src="{% static 'images/gassonhall.jpg' %}"/>
-                    I hold a degree in Business Administration (with honors) from Boston College, and a certificate in Green Energy Management from San Diego State.  I'm always learning, including recently completing a course in Bioinformatic Algorithms at <a href="https://stepic.org/">Stepic</a>.
+                    I hold a degree in Business Administration (with honors) from Boston College, and a certificate in
+                    Green Energy Management from San Diego State.  I'm always learning, including recently completing
+                    a course in Bioinformatic Algorithms at <a href="https://stepic.org/">Stepic</a>.
                 </p>
             </div>
             <div class="row">
                 <p>
                     <img id="img3" class="about-images img-thumbnail" src="{% static 'images/angkormonkey.jpg' %}"/>
-                    I've <a href="http://douganddaniele.tumblr.com/page/3">lived on six continents</a>, but I have happily settled in San Diego.  I love building things, especially in service of social good.  I enjoy beach volleyball, acoustic guitar, and tabletop gaming.
+                    I've <a href="http://douganddaniele.tumblr.com/page/3">lived on six continents</a>, but I have happily
+                    settled in San Diego.  I love building things, especially in service of social good.  I enjoy beach
+                    volleyball, acoustic guitar, and tabletop gaming.
                 </p>
             </div>
             <div class="row">
-                <h4>My primary interest is in <em>contract web development</em>, but I would consider the perfect full-time fit.  Reach out to me here:</h4>
+                <h4>My primary interest is in <em>contract web development</em>, but I would consider the perfect
+                    full-time fit.  Reach out to me here:</h4>
                 <address>
-                    <h4><span class="glyphicon glyphicon-envelope"></span> <a href="mailto:fakeemail@fakeland.com">Doug's fake email</a></h4>
+                    <h4><span class="glyphicon glyphicon-envelope"></span> <a href="mailto:fakeemail@fakeland.com">
+                        Doug's fake email</a></h4>
                 </address>
             </div>
+            -->
 
 
+            <!-- same info in a carousel -->
+            {% verbatim %}
+            <div id="carouselContainer" ng-controller="carouselController">
+                <carousel interval="myInterval">
+                    <slide ng-repeat="slide in slides" active="slide.active">
+                        <img ng-src="{{ slide.image }}" style="margin:auto;"/>
+                        <div class="carousel-caption">
+                            <p>{{ slide.text }}</p>
+                        </div>
+                    </slide>
+                </carousel>
+            </div>
+
+            {% endverbatim %}
         </section>
+
+
+
 
     </div>
 
