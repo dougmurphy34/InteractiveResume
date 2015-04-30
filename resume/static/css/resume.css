@@ -94,5 +94,29 @@ footer h4 {
 
 /* to make space under the navbar (and prevent content overlap except when scrolling */
 #menuSpacerDiv {
-                margin-top: 60px;
-            }
+    margin-top: 60px;
+}
+
+/* jumbotron settings for welcome page*/
+.jumbotron {
+    position: relative;
+    background: none;
+    padding: 5px;
+    margin-bottom: 25px;
+    font-size: 10px;
+    font-weight: 200;
+    line-height: 2.1428571435;
+    font-family: "Open Sans Condensed", arial, helvetica, serif;
+}
+
+.jumbotron h1 {
+    padding: 50px;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+}
+
+a {
+    /* Prevent (glyphicon + text) in links from being split onto separate lines*/
+    white-space: nowrap;
+}

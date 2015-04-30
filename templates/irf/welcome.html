@@ -2,20 +2,8 @@
 {% load static %}
 
 {% block page_scripts %}
-   <!-- futzing with Jumbotron.  Move this to stylesheet when done (or, don't use a Jumbotron)-->
+   <!-- Background for Jumbotron; can't go in .css because it requires static -->
     <style>
-
-        .jumbotron {
-            position: relative;
-            background: none;
-            padding: 5px;
-            margin-bottom: 25px;
-            font-size: 10px;
-            font-weight: 200;
-            line-height: 2.1428571435;
-            font-family: "Open Sans Condensed", arial, helvetica, serif;
-        }
-
         .jumbotron:after {
             content:"";
             background: url({% static 'images/croppedslanteddesktop.png' %}) no-repeat;
@@ -28,18 +16,6 @@
             position: absolute;
             z-index: -1;
          }
-
-        .jumbotron h1 {
-            padding: 50px;
-            text-align: center;
-            z-index: 2;
-            position: relative;
-        }
-
-        a {
-            /* Prevent (glyphicon + text) in links from being split onto separate lines*/
-            white-space: nowrap;
-        }
 
     </style>
 
@@ -63,12 +39,13 @@
     <div class="container">
         <p>
             <img src="{% static "DougFace2.JPG" %}" alt="DougImage2" class="img-rounded front-page-image">
-            I built this website to both tell and show you what I can do.  Here you'll find information on all my career accomplishments, displayed using the most popular technologies on the web.  You won't have to wonder if I can put out a finished product - you're looking at one.
+            Traditional resumes are a good way to list work history and accomplishments, but when you're looking for a web
+            designer, it's best to see a portfolio of work as well.  I built this website to do both.
         </p>
         <p>
-
-            Check out the <a href="{% url 'resume.views.all_my_jobs' %}"><span class="glyphicon glyphicon-briefcase"></span> Work Summary</a> page for a quick visual overview,
-            or the <a href="{% url 'resume.views.portfolio' %}"><span class="glyphicon glyphicon-blackboard"></span> Portfolio</a> page for a little showing off.
+            Check out <a href="{% url 'resume.views.all_my_jobs' %}"><span class="glyphicon glyphicon-briefcase"></span> Work Summary</a>
+            to see where I've worked, or <a href="{% url 'resume.views.portfolio' %}"><span class="glyphicon glyphicon-blackboard"></span> Portfolio</a>
+            to see what I can do with leading web technologies.
         </p>
     </div>
 

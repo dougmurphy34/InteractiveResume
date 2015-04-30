@@ -8,20 +8,35 @@
     <script>
 
         resume_app.controller('ExampleController', ['$scope', function($scope) {
+
             $scope.color = {
                 name: 'blue'
             };
-            $scope.specialValue = {
-                "id": "12345",
-                "value": "green"
-            };
+
+            $scope.circlecolor = "blue";
+
+            $scope.shapeRadii = [
+                {name: "circle", radius: "50px"},
+                {name: "square", radius: "0px"}
+            ];
+
+            $scope.selectedShape = {name: "circle", radius: "50px"};
+
+            $scope.radius = "50px";
+
+
+
+            $scope.changeCircleColor = function(inputColor) {
+                $scope.circlecolor = inputColor
+            }
+
         }]);
     </script>
 
 {% endblock page_scripts %}
 
 {% block body_block %}
-<div class="container">
+<div class="container" ng-controller="ExampleController">
     <p>
         I believe the best websites are responsive websites.  I use <img src="{% static 'images/bootstrap.png' %}" class="tiny-logo"/>ootstrap to
         make this site look as good on a phone as it does on a computer.  Try making your browser very narrow and watch the top nagivation menu.
@@ -42,30 +57,41 @@
         I can give users instant responses to their actions, like so:
     </p>
 
-    <div id="circleDiv" style="border-radius: 50px; background: green; width: 100px; height: 100px; text-align: center;">
-        <h4 style="position: relative; top:40px;">I am a circle!</h4>
+    <div id="formDiv">
+        <form name="myForm">
+            <label>
+                <input type="radio" ng-model="color.name" ng-click="changeCircleColor('red')" value="red">
+                Red
+            </label>
+            <br/>
+            <label>
+                <input type="radio" ng-model="color.name" ng-click="changeCircleColor('green')" ng-value="green">
+                Green
+            </label>
+            <br/>
+            <label>
+                <input type="radio" ng-model="color.name" ng-click="changeCircleColor('blue')" value="blue">
+                Blue
+            </label>
+            <br/>
+            <select ng-model="selectedShape" ng-options="item.name for item in shapeRadii track by item.radius"></select>
+        </form>
     </div>
+
+
+    {% verbatim %}
+        <div id="circleDiv" style="border-radius: {{ selectedShape.radius }}; background: {{ circlecolor }};">
+            <h4 style="position: relative; top:20px;">I am a {{ circlecolor }} {{ selectedShape.name }}!</h4>
+        </div>
+    {% endverbatim %}
+
+
 
     <h3>The source code for this project is publicly available on GitHub, <a href="https://github.com/dougmurphy34/InteractiveResume">here</a>.</h3>
 
     <h6>You are using {{ browser }} as your browser.</h6>
 
-    <form name="myForm" ng-controller="ExampleController">
-      <label>
-        <input type="radio" ng-model="color.name" value="red">
-        Red
-      </label><br/>
-      <label>
-        <input type="radio" ng-model="color.name" ng-value="specialValue">
-        Green
-      </label><br/>
-      <label>
-        <input type="radio" ng-model="color.name" value="blue">
-        Blue
-      </label><br/>
-      <tt>color = {% verbatim %}{{ color.name | json }}{% endverbatim %}</tt><br/>
-     </form>
-         Note that `ng-value="specialValue"` sets radio item's value to be the value of `$scope.specialValue`.
+
 
 </div>
 

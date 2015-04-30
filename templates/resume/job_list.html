@@ -6,7 +6,7 @@
 
     <style>
         .localPad {
-            margin: 10px;
+            margin: 0 10px;
         }
     </style>
 
@@ -70,8 +70,8 @@
 {% block body_block %}
 
     <div class="container-fluid" ng-controller="sort_controller">
-        <h6>Filter powered by <img src="{% static 'images/angular.jpg' %}" style="width: 30px;"/>ngular.js: </h6>
 
+        <p><span class="glyphicon glyphicon-briefcase"></span> My fifteen-year career has spanned roles and industries, but always with a focus on web technology.</p>
         <div class="form-group">
             <input type="text" class="form-inline localPad" autofocus ng-model="companyFilter.company_name" placeholder="by Company Name"/>
             {% verbatim %}
@@ -81,10 +81,7 @@
             {% endverbatim %}
 
         </div>
-
-        <!--
-        Filter Dump: {% verbatim %}{{ skillIncludes }}{% endverbatim %}
-        -->
+        <h6>Filter powered by <img src="{% static 'images/angular.jpg' %}" style="width: 30px;"/>ngular.js </h6>
 
         <table class="table table-striped">
             <thead>
