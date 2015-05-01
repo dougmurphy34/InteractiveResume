@@ -60,12 +60,14 @@
                     }
                 }
             };
+
+            //for Typeahead on company filter text input
+            $scope.typedText = undefined;
+
         });
     </script>
 
 {% endblock %}
-
-
 
 {% block body_block %}
 
@@ -73,7 +75,7 @@
 
         <p><span class="glyphicon glyphicon-briefcase"></span> My fifteen-year career has spanned roles and industries, but always with a focus on web technology.</p>
         <div class="form-group">
-            <input type="text" class="form-inline localPad" autofocus ng-model="companyFilter.company_name" placeholder="by Company Name"/>
+            <input type="text" class="form-inline localPad" autofocus ng-model="typedText.company_name" typeahead="job.company_name for job in jobs_from_django | filter: {company_name: $viewValue}" placeholder="by Company Name"/>
             {% verbatim %}
                 <label ng-repeat="skill in skills_from_django" class="checkbox-inline">
                     <input type="checkbox" ng-click="includeSkill(skill.name)"/><img src="{{ skill.logo }}" class="tiny-logo" alt="{{ skill.name }}" title="{{ skill.name }}"/>
@@ -94,7 +96,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="job in jobs_from_django | filter:skillFilter | filter: companyFilter ">
+                <tr ng-repeat="job in jobs_from_django | filter:skillFilter | filter: typedText ">
                     <td>
                         {% verbatim %}<a href="{{ job.detail_link }}" title="See job details">{{ job.company_name }}</a>{% endverbatim %}
                     </td>

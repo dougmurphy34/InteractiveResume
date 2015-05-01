@@ -1,14 +1,13 @@
-/*full-site font from Google*/
+/* full-site font from Google.  Does not look good on Internet Explorer.  Does anything? */
 body {
     font-family: "Ubuntu Condensed", sans-serif;
 }
 
-/* White-colored font with shadow, for overlaying on images (like Welcome page Jumbotron */
+/* White-colored font with shadow, for overlaying on images (like Jumbotron and Carousel) */
 h2 {
     font-size: 1.5em;
     text-shadow: -2px 2px 2px #333;
     margin: 20px;
-    /*padding: 40px;*/
     color: white;
 }
 
@@ -18,7 +17,8 @@ p {
 }
 
 img {
-    /* This apparently makes image resizes via height/width property not look horrible in Internet Explorer. */
+    /* This apparently makes image resizes via height/width property not look horrible in Internet Explorer.
+    Tested; did not appear to work.  Should probably be removed. */
     -ms-interpolation-mode: bicubic;
 }
 
@@ -49,11 +49,13 @@ footer h4 {
     width: 90px;
 }
 
+/* To match common resume styling technique on job_detail page */
 .date-range {
     text-align: right;
 }
 
-.image-panel {
+/* for Job Detail page, to center and pad logo box.  Box Shadow for fun. */
+.logo-panel, .image-panel {
     padding: 20px;
     text-align: center;
     box-shadow: 8px 8px 10px #8888AA;
@@ -61,15 +63,7 @@ footer h4 {
 }
 
 .image-panel img {
-
     max-width: 300px;
-}
-
-/* for Job Detail page, to center and pad logo box.  Box Shadow for fun. */
-.logo-panel {
-    padding: 20px;
-    text-align: center;
-    box-shadow: 8px 8px 10px #8888AA;
 }
 
 /* For skill logos in job list */
