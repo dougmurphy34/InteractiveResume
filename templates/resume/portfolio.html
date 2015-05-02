@@ -9,6 +9,9 @@
 
         resume_app.controller('ExampleController', ['$scope', function($scope) {
 
+
+            // COLOR CHANGING SHAPE
+
             $scope.color = {
                 name: 'blue'
             };
@@ -24,11 +27,14 @@
 
             $scope.radius = "50px";
 
-
-
             $scope.changeCircleColor = function(inputColor) {
                 $scope.circlecolor = inputColor
-            }
+            };
+
+            //SCREEN SIZE OUTPUT
+
+            $scope.screenwidth = screen.width;
+            $scope.screenheight = screen.height;
 
         }]);
     </script>
@@ -39,13 +45,17 @@
 <div class="container" ng-controller="ExampleController">
     <p>
         I believe the best websites are responsive websites.  I use <img src="{% static 'images/bootstrap.png' %}" class="tiny-logo"/>ootstrap to
-        make this site look as good on a phone as it does on a computer.  Try making your browser very narrow and watch the top nagivation menu.
-        It changes to accomodate your situation.
+        make this site look as good on a phone as it does on a computer.  <span class="resizeable-only">Try making your browser
+        very narrow and watch the top nagivation menu.  It changes to accomodate your situation.</span>
     </p>
 
 
-    <p><img src="{% static 'images/bootstrap.png' %}" class="tiny-logo"/>ootstrap uses CSS media queries track your device information as it changes.  Try it out:</p>
+    <p><img src="{% static 'images/bootstrap.png' %}" class="tiny-logo"/>ootstrap uses CSS media queries track your
+        device information as it changes.  <span class="resizeable-only">Try it out:</span></p>
     <ul>
+        {% verbatim %}
+        <li>Your screen is {{ screenwidth }} x {{ screenheight }}</li>
+        {% endverbatim %}
         <li class="smallscreen">You are using a <span class="small">small</span> browser window (< 640 pixels wide).</li>
         <li class="mediumscreen">You are using a <span class="medium">medium</span> browser window (640 to 1440 pixels wide).</li>
         <li class="largescreen">You are using a <span class="large">large</span> browser window (>1440 pixels wide).</li>

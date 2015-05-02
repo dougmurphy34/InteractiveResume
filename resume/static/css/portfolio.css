@@ -38,8 +38,14 @@ h3 {
     }
 }
 
-span {
-    display: inline-block;
+
+
+@media (max-device-width: 767px), handheld {
+    /* Shut down all the "resize your screen" tricks on non-resizeable screens */
+    .resizeable-only {
+        display: none;
+    }
+
 }
 
 .wider {

@@ -8,6 +8,15 @@
         .localPad {
             margin: 0 10px;
         }
+
+        /* On narrow screens, hide the super-wide column to make the page still work as a grid.  Data is still
+            available on detail page. */
+        @media (max-width: 768px) {
+            .bigColumn {
+                display: none;
+            }
+        }
+
     </style>
 
     <script>
@@ -90,7 +99,7 @@
                 <tr>
                     <th>Company</th>
                     <th>Position</th>
-                    <th>Description</th>
+                    <th class="bigColumn">Description</th>
                     <th class="skillColumn">Skills Used</th>
                     <th>Service Time</th>
                 </tr>
@@ -103,7 +112,7 @@
                     <td>
                         {% verbatim %}{{ job.job_title }}{% endverbatim %}
                     </td>
-                    <td>
+                    <td class="bigColumn">
                         {% verbatim %}{{ job.job_description }}{% endverbatim %}
                     </td>
                     <td class="skillColumn">

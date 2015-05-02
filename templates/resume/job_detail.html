@@ -2,7 +2,19 @@
 
 {% load static %}
 
+{% block page_scripts %}
 
+    <style>
+        .jobTitle {
+            float: right;
+            font-style: italic;
+            font-size: 0.9em; /* Text is aligning at the top of H1, not the bottom, looks a bit funny.  Get another opinion. */
+        }
+    </style>
+
+
+
+{% endblock page_scripts %}
 
 {% block body_block %}
     <h3><span class="label label-info"><span class="glyphicon glyphicon-backward"></span> <a href="{% url 'resume.views.all_my_jobs' %}">return to joblist</a></span></h3>
@@ -11,7 +23,7 @@
     <div class="container">
         <div class="panel panel-primary">
             <div class="panel-heading clearfix">
-                <h1><img src="{% static job.company_logo %}" class="medium-logo"/> {{ job.company_name }}<span style="float: right;">{{ job.job_title }}</span></h1>
+                <h1><img src="{% static job.company_logo %}" class="medium-logo"/> {{ job.company_name }}<span class="jobTitle">{{ job.job_title }}</span></h1>
 
             </div>
             <div class="panel-body">
