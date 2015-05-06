@@ -17,6 +17,34 @@
             }
         }
 
+
+        .filteredJobs {
+
+           /* TEMPORARY FOR TEST*/
+
+            display: table-row;
+
+        }
+
+        /* Animation for filters */
+        .filteredJobs.ng-enter, .filteredJobs.ng-leave {
+            -webkit-transition: 200ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+            -moz-transition: 200ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+            -o-transition: 200ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+            transition: 200ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+        }
+
+        /* TODO: This slideout looks great, but it doesn't work with a table layout.  It might work with CSS-table styles.  That may or may not be worth the effort. */
+        .filteredJobs.ng-enter.ng-enter-active, .filteredJobs.ng-leave {
+            opacity: 1;
+            /*left: 0;*/
+        }
+
+        .filteredJobs.ng-enter, .filteredJobs.ng-leave-active {
+            opacity: 0;
+            /*left: -750px;*/
+        }
+
     </style>
 
     <script>
@@ -105,7 +133,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="job in jobs_from_django | filter:skillFilter | filter: typedText ">
+                <tr class="filteredJobs" ng-repeat="job in jobs_from_django | filter:skillFilter | filter: typedText ">
                     <td>
                         {% verbatim %}<a href="{{ job.detail_link }}" title="See job details">{{ job.company_name }}</a>{% endverbatim %}
                     </td>

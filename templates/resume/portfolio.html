@@ -39,6 +39,87 @@
         }]);
     </script>
 
+    <style>
+        /* Animation station */
+
+        @keyframes circleSquare {
+            from {
+                border-radius: 100%;
+            }
+            to {
+                border-radius: 0%
+            }
+        }
+
+        @-webkit-keyframes circleSquare {
+            from {
+                border-radius: 100%;
+            }
+            to {
+                border-radius: 0%
+            }
+        }
+
+
+        @keyframes tutsFade {
+            0% {
+            opacity: 1;
+            }
+            100% {
+            opacity: 0;
+            }
+        }
+
+        @-webkit-keyframes tutsFade {
+            0% {
+            opacity: 1;
+            }
+            100% {
+            opacity: 0;
+            }
+        }
+
+        @-moz-keyframes tutsFade {
+            0% {
+            opacity: 1;
+            }
+            100% {
+            opacity: 0;
+            }
+        }
+
+        @-o-keyframes tutsFade {
+            0% {
+            opacity: 1;
+            }
+            100% {
+            opacity: 0;
+            }
+        }
+
+        @-ms-keyframes tutsFade {
+            0% {
+            opacity: 1;
+            }
+            100% {
+            opacity: 0;
+            }
+        }
+
+        #animationDiv {
+            background-color: orange;
+            width: 200px;
+            height: 200px;
+            margin: auto;
+            animation: circleSquare 5s 0s infinite linear alternate, tutsFade 3s 5s 2 ease alternate;
+            -webkit-animation: circleSquare 5s 0s infinite linear alternate, tutsFade 3s 5s 2 ease alternate;
+            -moz-animation: circleSquare 5s 0s infinite linear alternate, tutsFade 3s 5s 2 ease alternate;
+            -o-animation: circleSquare 5s 0s infinite linear alternate, tutsFade 3s 5s 2 ease alternate;
+            -ms-animation: circleSquare 5s 0s infinite linear alternate, tutsFade 3s 5s 2 ease alternate;
+        }
+
+    </style>
+
 {% endblock page_scripts %}
 
 {% block body_block %}
@@ -88,23 +169,22 @@
         </form>
     </div>
 
-
     {% verbatim %}
         <div id="circleDiv" style="border-radius: {{ selectedShape.radius }}; background: {{ circlecolor }};">
             <h4 style="position: relative; top:20px;">I am a {{ circlecolor }} {{ selectedShape.name }}!</h4>
         </div>
     {% endverbatim %}
 
+</div>
 
+<div id="animationDiv">
+        <span style="position: relative; top: 40%; left: 30%;">Animation is fun</span>
+</div>
 
+<div id="boringStuff">
     <h3>The source code for this project is publicly available on GitHub, <a href="https://github.com/dougmurphy34/InteractiveResume">here</a>.</h3>
 
     <h6>You are using {{ browser }} as your browser.</h6>
-
-
-
 </div>
-
-
 
 {% endblock body_block %}

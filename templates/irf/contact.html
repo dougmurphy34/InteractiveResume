@@ -25,7 +25,7 @@
             }
 
             .carousel-caption {
-                font-size: 0.7em;
+                font-size: 0.5em;
             }
         }
 
@@ -42,7 +42,7 @@
             }
 
             .carousel-caption {
-                font-size: 1.2em;
+                font-size: 1em;
             }
         }
     </style>
@@ -59,7 +59,16 @@
             {image: "{% static 'images/croppedslanteddesktop-1.6-1.png' %}", text: "My primary interest is in contract web development, but I would consider the perfect full-time fit.  Reach out to me at fake@email.com"}
         ];
 
-    })
+    });
+
+    // This is a workaround to a bug with ngAnimate and Angular carousels.  Angular is aware of the issue:
+    // https://github.com/angular-ui/bootstrap/issues/1565
+    resume_app.config(
+        ['$animateProvider',
+        function ($animateProvider) {
+            $animateProvider.classNameFilter(/carousel/);
+        }]);
+
     </script>
 
 {% endblock page_scripts %}
