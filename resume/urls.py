@@ -13,5 +13,4 @@ urlpatterns = patterns('',
     url(r'^job/(?P<job_id>\d+)/$', views.job_detail, name='job_detail'),
     url(r'^(?P<job_id>\d+)/$', views.job_detail),
     url(r'portfolio', views.portfolio, name='portfolio'),
-    url(r'resume', views.resume, name='resume'),
 )

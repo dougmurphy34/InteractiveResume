@@ -63,4 +63,3 @@ def portfolio(request):
     context = {'nbar': "portfolio", 'browser': useragentstring}
 
     return render(request, template, context)
-

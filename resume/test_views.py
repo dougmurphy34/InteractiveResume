@@ -55,11 +55,3 @@ class ContactViewTests(TestCase):
     def test_contact_loads(self):
         response = self.client.get(reverse('contact', args=()))
         self.assertEqual(response.status_code, 200)
-
-
-class ResumeViewTests(TestCase):
-    def test_resume_with_one_job(self):
-        local_job = create_job("Carousel Job", "Operator")
-        response = self.client.get(reverse('resume'), args=local_job)
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Carousel Job")
