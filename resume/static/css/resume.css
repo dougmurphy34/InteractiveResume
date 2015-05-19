@@ -16,12 +16,6 @@ p {
     font-size: 1.2em;
 }
 
-img {
-    /* This apparently makes image resizes via height/width property not look horrible in Internet Explorer.
-    Tested; did not appear to work.  Should probably be removed. */
-    -ms-interpolation-mode: bicubic;
-}
-
 h1:first-letter {
 /*CSS3 suggests a double-colon to distinguish this pseudo-element from a pseudo-class,
         but single-colon maintains compatibility with old browsers*/
@@ -42,6 +36,40 @@ footer h4 {
     left: 15px;
     top: 10px;
     width: 80%;
+}
+
+.popoutFooterDiv {
+            -webkit-transition: 1000ms linear all;
+            -o-transition: 1000ms linear all;
+            -moz-transition: 1000ms linear all;
+            transition: 1000ms linear all;
+            position: absolute;
+            display: block;
+            border: green 5px ridge;
+            background-color: black;
+            z-index: 16; /* Necessary because carousel indicators in ui-bootstrap are at 15 */
+            padding: 5px;
+            border-radius: 6px;
+            font-family: 'Iceland', cursive;
+            max-height: 90%;
+            overflow: hidden; /* prevents scrollbars due to overflow on height with tiny width during transition, but
+             makes the close animation lose text immediately.  Why?  */
+            height: auto;
+            width: 80%;
+            opacity: 1;
+            color: #00DD00;
+            top: 100px;
+            left: 20px;
+
+}
+
+.popoutFooterDiv.ng-hide {
+    height: 0;
+    width: 0;
+    opacity: 0;
+    color: blue;
+    top: 10px;
+    left: 0;
 }
 
 .floatRight {
@@ -67,7 +95,6 @@ footer h4 {
 }
 
 .image-panel img {
-    /*max-width: 300px;*/
     width: 100%;
 }
 
@@ -92,7 +119,6 @@ footer h4 {
     transform: rotate(90deg);
     margin: 20px 10px;
     float: left;
-    /*padding-right: 10px;*/
 }
 
 /* to make space under the navbar (and prevent content overlap except when scrolling */

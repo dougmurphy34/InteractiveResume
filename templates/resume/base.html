@@ -37,7 +37,8 @@
 
         <!-- From Google fonts, http://www.google.com/fonts-->
         <link href='//fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Iceland' rel='stylesheet' type='text/css'>
 
     {% endblock default_styles %}
 
@@ -61,6 +62,7 @@
 
     </script>
 
+    <!-- Toggle for the "How I made this page" popout -->
     <script>
         resume_app.controller('footerDivController', function($scope) {
             $scope.popOpen = false;
@@ -71,44 +73,6 @@
 
         });
     </script>
-
-    <style>
-        .popoutFooterDiv {
-            -webkit-transition: 1000ms linear all;
-            -o-transition: 1000ms linear all;
-            -moz-transition: 1000ms linear all;
-            transition: 1000ms linear all;
-            position: absolute;
-            display: block;
-            border: brown 5px solid;
-            background-color: black;
-            z-index: 4; /* Once close button is implemented */
-        }
-
-        .popoutFooterDiv {
-            max-height: 90%;
-            overflow: hidden; /* prevents scrollbars due to overflow on height with tiny width during transition, but
-             makes the close animation lose text immediately.  Why?  */
-            height: auto;
-            width: 80%;
-            opacity: 1;
-            color: red;
-            top: 100px;
-            left: 20px;
-
-        }
-
-        .popoutFooterDiv.ng-hide {
-            height: 0;
-            width: 0;
-            opacity: 0;
-            color: blue;
-            top: 10px;
-            left: 0;
-        }
-
-    </style>
-
 </head>
 <body ng-app="resume-app">
 

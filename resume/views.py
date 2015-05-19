@@ -64,13 +64,3 @@ def portfolio(request):
 
     return render(request, template, context)
 
-
-#  Obsolete; remove when done playing with Carousels
-def resume(request):
-    template = 'resume/resume.html'
-    jobs = Job.objects.get_queryset().order_by('start_date')
-    context = {'joblist': jobs, 'nbar': "resume"}
-
-    return render(request, template, context)
-
-
