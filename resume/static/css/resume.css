@@ -44,6 +44,10 @@ footer h4 {
     width: 80%;
 }
 
+.floatRight {
+    float: right;
+}
+
 /* To control wrapping of icons.  This gets 2 per row (job_list skills column) */
 .skillColumn {
     width: 90px;

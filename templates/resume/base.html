@@ -25,7 +25,7 @@
         <!-- Angular animation -->
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.js"></script>
         <!-- ui-bootstrap (for Angular/bootstrap compatibility; incompatible with jQuery -->
-        <script src="{% static 'js/ui-bootstrap-tpls-0.12.1.min.js' %}"></script>
+        <script src="{% static 'js/ui-bootstrap-tpls-0.13.0.min.js' %}"></script>
 
         <script src="{% static 'js/resume-angular-controllers.js' %}"></script>
 
@@ -60,6 +60,54 @@
       ga('send', 'pageview');
 
     </script>
+
+    <script>
+        resume_app.controller('footerDivController', function($scope) {
+            $scope.popOpen = false;
+            /**/
+            $scope.toggleFooterDiv = function() {
+                $scope.popOpen = $scope.popOpen === false;
+            }
+
+        });
+    </script>
+
+    <style>
+        .popoutFooterDiv {
+            -webkit-transition: 1000ms linear all;
+            -o-transition: 1000ms linear all;
+            -moz-transition: 1000ms linear all;
+            transition: 1000ms linear all;
+            position: absolute;
+            display: block;
+            border: brown 5px solid;
+            background-color: black;
+            z-index: 4; /* Once close button is implemented */
+        }
+
+        .popoutFooterDiv {
+            max-height: 90%;
+            overflow: hidden; /* prevents scrollbars due to overflow on height with tiny width during transition, but
+             makes the close animation lose text immediately.  Why?  */
+            height: auto;
+            width: 80%;
+            opacity: 1;
+            color: red;
+            top: 100px;
+            left: 20px;
+
+        }
+
+        .popoutFooterDiv.ng-hide {
+            height: 0;
+            width: 0;
+            opacity: 0;
+            color: blue;
+            top: 10px;
+            left: 0;
+        }
+
+    </style>
 
 </head>
 <body ng-app="resume-app">
@@ -98,8 +146,9 @@
 
     <!-- Page Footer -->
 
-    <footer>
-        <h4>Prefer a <a href="{% static 'DougMurphyResume12-10-2014.pdf' %}">traditional PDF resume</a>?<a href="#" style="float:right;">How did I build this page?</a></h4>
+    <footer ng-controller="footerDivController">
+    <div class="popoutFooterDiv" ng-show="popOpen">{% include "irf/site_build_subtemplate.html" %}</div>
+        <h4>Prefer a <a href="{% static 'DougMurphyResume12-10-2014.pdf' %}">traditional PDF resume</a>?<a href="#" class="floatRight" ng-click="toggleFooterDiv();">How did I build this page?</a></h4>
     </footer>
 </body>
 </html>

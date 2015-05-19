@@ -8,7 +8,6 @@
         .carousel-caption {
             background: rgba(0, 0, 10, 0.5)
         }
-
         /* For small screens (like phones) */
         @media (max-width: 640px) {
 
@@ -28,19 +27,14 @@
                 font-size: 0.5em;
             }
         }
-
-
         /* For not-small screens (like desktops) */
         @media (min-width: 639px) {
-
             .container {
                 max-width: 600px;
             }
-
             #carouselContainer {
                 width: 600px;
             }
-
             .carousel-caption {
                 font-size: 1em;
             }
@@ -48,7 +42,6 @@
     </style>
 
     <!-- carousel controller -->
-
     <script>
     resume_app.controller('carouselController', function($scope) {
         $scope.myInterval = 0;
@@ -58,16 +51,17 @@
             {image: "{% static 'images/angkormonkey-1.6-1.jpg' %}", text: "I've lived on six continents, but I have happily settled in San Diego.  I love building things, especially in service of social good.  I enjoy beach volleyball, acoustic guitar, and tabletop gaming."},
             {image: "{% static 'images/croppedslanteddesktop-1.6-1.png' %}", text: "My primary interest is in contract web development, but I would consider the perfect full-time fit.  Reach out to me at fake@email.com"}
         ];
-
     });
 
-    // This is a workaround to a bug with ngAnimate and Angular carousels.  Angular is aware of the issue:
+    /* This is a workaround to a bug with ngAnimate and Angular carousels.  Angular is aware of the issue:
     // https://github.com/angular-ui/bootstrap/issues/1565
+    // This means ngAnimate is disabled for all elements in the application with the carousel class.
     resume_app.config(
         ['$animateProvider',
         function ($animateProvider) {
             $animateProvider.classNameFilter(/carousel/);
         }]);
+    */
 
     </script>
 

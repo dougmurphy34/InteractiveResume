@@ -1,3 +1,44 @@
+<!-- This page is included in the footer of base.html and hidden by default.
+    It contains information on how I build the site, and how I built the page the user is currently on. -->
+
+<style>
+    .closeX {
+        border: 3px solid;
+        font-size: 1.5em;
+        float: right;
+        padding: 0 3px;
+    }
+
+    .closeX:hover {
+        color: white;
+        cursor: pointer;
+    }
+
+    h3.index, h3.all_my_jobs, h3.about, h3.portfolio, h3.job_detail {
+        display: none;
+    }
+
+    h3.{{ nbar }} {
+        display: block;
+    }
+
+</style>
+
+<span class="closeX" ng-click="toggleFooterDiv()"> X </span>
+<h3 class="index">WELCOME PAGE</h3>
+<h3 class="index">This page features Bootstrap's jumbotron, glyphicons and navbar.</h3>
+<h3 class="all_my_jobs">JOB LIST</h3>
+<h3 class="all_my_jobs">This page uses a ui-bootstrap datagrid to display data stored in a postgresql database.  The
+grid is contextualized with CSS media queries.  Data can be filtered by skill using Angular.js, or by company name with
+    the help of an Angular typeahead.  The visual filter is aided by CSS transition animations.</h3>
+<h3 class="job_detail">JOB DETAIL</h3>
+<h3 class="job_detail">This page is laid out with Bootstrap panels, filtered with Django conditionals.  Data is pulled
+    from postgresql using a Django queryset.</h3>
+<h3 class="about">ABOUT</h3>
+<h3 class="about">This page uses a ui-bootstrap carousel, sized with CSS media queries to fit your device.</h3>
+<h3 class="portfolio">PORTFOLIO</h3>
+<h3 class="portfolio">This page showcases CSS media queries and CSS animations, as well as Angular.js data binding.</h3>
+
 <p>
     All development for this site was done in a VMWare virtual machine running Ubuntu Linux.  I used PyCharm as my IDE,
     with integrated GIT for version control.  The site is deployed on Heroku, a PaaS that offers Django hosting.
