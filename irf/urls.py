@@ -10,4 +10,5 @@ urlpatterns = patterns('',
     url(r'^', include('resume.urls')),
     url(r'^contact/', 'resume.views.contact', name='contact'),
     url(r'^workshop/', 'irf.views.workshop', name='workshop'),
+    url(r'^workshop2/', 'irf.views.workshop2', name='workshop2'),
 )

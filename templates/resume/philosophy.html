@@ -1,0 +1,220 @@
+{% extends 'resume/base.html' %}
+
+{% load static %}
+
+{% block page_scripts %}
+    <link href="{% static 'css/philosophy.css' %}" rel="stylesheet"/>
+
+    <script>
+
+        resume_app.controller('ExampleController', ['$scope', function($scope) {
+
+
+            // COLOR CHANGING SHAPE
+
+            $scope.color = {
+                name: 'blue'
+            };
+
+            $scope.circlecolor = "blue";
+
+            $scope.shapeRadii = [
+                {name: "circle", radius: "50px"},
+                {name: "square", radius: "0px"}
+            ];
+
+            $scope.selectedShape = {name: "circle", radius: "50px"};
+
+            $scope.radius = "50px";
+
+            $scope.changeCircleColor = function(inputColor) {
+                $scope.circlecolor = inputColor
+            };
+
+            //SCREEN SIZE OUTPUT
+
+            $scope.screenwidth = screen.width;
+            $scope.screenheight = screen.height;
+
+        }]);
+    </script>
+
+    <style>
+
+        .row {
+            width: 100%;
+        }
+
+        .row div {
+            text-align: center;
+        }
+
+        #circleDiv, #animatedCircleDiv {
+            margin: auto;
+        }
+
+        #busyClean {
+            background: radial-gradient(pink, orange, lime);
+            background: -webkit-radial-gradient(pink, orange, lime);
+            background: -moz-radial-gradient(pink, orange, lime);
+            background: -o-radial-gradient(pink, orange, lime);
+            font-style: italic;
+            font-family: "cursive";
+            text-decoration: underline;
+            border: 2px dashed;
+        }
+
+        #busy1 {
+            color: green;
+        }
+
+        #busy2 {
+            color: purple;
+        }
+
+        #innerResponsiveExample {
+            position: relative;
+            background-color: red;
+            top: 20px;
+            height: 50%;
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+            transition: color 2s ease;
+        }
+
+
+        #innerUnresponsiveExample {
+            position: relative;
+            background-color: red;
+            top: 20px;
+            height: 50px;
+            width: 100px;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        /* Animation - keeper */
+
+        @keyframes responsiveResize {
+            0%, 100% { width: 10%;}
+            50% {width: 30%;}
+        }
+        @-webkit-keyframes responsiveResize {
+            0%, 100% { width: 10%;}
+            50% {width: 30%;}
+        }
+        @-moz-keyframes responsiveResize {
+            0%, 100% { width: 10%;}
+            50% {width: 30%;}
+        }
+        @-o-keyframes responsiveResize {
+            0%, 100% { width: 10%;}
+            50% {width: 30%;}
+        }
+
+        #responsiveExample {
+            padding: 0;
+            width: 10%;
+            background-color: green;
+            margin: auto;
+            height: 150px;
+            border-radius: 15px;
+            animation: responsiveResize 3s 0.5s infinite linear alternate;
+            -webkit-animation: responsiveResize 4s 1.5s infinite linear alternate;
+            -moz-animation: responsiveResize 3s 0.5s infinite linear alternate;
+            -o-animation: responsiveResize 3s 0.5s infinite linear alternate;
+        }
+
+
+
+
+    </style>
+
+{% endblock page_scripts %}
+
+{% block body_block %}
+<div class="container-fluid" ng-controller="ExampleController">
+
+    <h1>My Design Philosophy</h1>
+
+
+
+    <div class="row" id="contentRow1">
+
+        <div id="responsiveExample" class="col-lg-5 col-med-5 col-sm-5">
+            <div id="innerResponsiveExample">Responsive</div>
+        </div>
+        <div class="col-lg-2 col-med-2 col-sm-2">is better than</div>
+        <div id="responsiveExample" class="col-lg-5 col-med-5 col-sm-5">
+            <div id="innerUnresponsiveExample">Static</div>
+        </div>
+        <!--
+        <div id="animationDiv" class="col-lg-12 col-med-12 col-sm-12">
+            <span style="position: relative; top: 40%; left: 30%;">Animation is fun</span>
+        </div>
+        -->
+    </div>
+
+    <div class="row" id="contentRow2">
+        <div class="col-lg-5 col-med-5 col-sm-5">
+            <div>Smooth
+            {% verbatim %}
+                <div id="animatedCircleDiv" class="{{ circlecolor }} rad{{ selectedShape.radius }}">
+                    <h4 style="position: relative; top:25px;">I am a {{ circlecolor }} {{ selectedShape.name }}!</h4>
+                </div>
+            {% endverbatim %}
+            </div>
+        </div>
+        <div class="col-lg-2 col-med-2 col-sm-2">
+            is better than <br>
+            <div id="formDiv">
+                <form name="myForm">
+                    <label>
+                        <input type="radio" ng-model="color.name" ng-click="changeCircleColor('red')" value="red">
+                        Red
+                    </label>
+                    <br/>
+                    <label>
+                        <input type="radio" ng-model="color.name" ng-click="changeCircleColor('green')" value="green">
+                        Green
+                    </label>
+                    <br/>
+                    <label>
+                        <input type="radio" ng-model="color.name" ng-click="changeCircleColor('blue')" value="blue">
+                        Blue
+                    </label>
+                    <br/>
+                    <select ng-model="selectedShape" ng-options="item.name for item in shapeRadii track by item.radius"></select>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-5 col-med-5 col-sm-5">
+            Sudden
+            {% verbatim %}
+                <div id="circleDiv" style="border-radius: {{ selectedShape.radius }}; background: {{ circlecolor }};">
+                    <h4 style="position: relative; top:25px;">I am a {{ circlecolor }} {{ selectedShape.name }}!</h4>
+                </div>
+            {% endverbatim %}
+        </div>
+    </div>
+
+    <div class="row" id="titleRow3">
+        <div class="col-lg-5 col-med-5 col-sm-5"><h1 id="cleanClean">Clean</h1></div>
+        <div class="col-lg-2 col-med-2 col-sm-2"><h4>is better than</h4></div>
+        <div class="col-lg-5 col-med-5 col-sm-5"><h1 id="busyClean"><span id="busy1">Bu</span><span id="busy2">sy</span></h1></div>
+    </div>
+
+
+
+
+
+</div>
+
+<div id="boringStuff">
+    <h3>The source code for this project is publicly available on GitHub, <a href="https://github.com/dougmurphy34/InteractiveResume">here</a>.</h3>
+
+    <h6>You are using {{ browser }} as your browser.</h6>
+</div>
+
+{% endblock body_block %}

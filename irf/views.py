@@ -8,3 +8,8 @@ def workshop(request):
     template = 'irf/workshop.html'
     context = {'alljobs': alljobs}
     return render(request, template, context)
+
+def workshop2(request):
+    template = 'irf/workshop2.html'
+    context = {}
+    return render(request, template, context)

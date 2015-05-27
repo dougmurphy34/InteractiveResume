@@ -51,7 +51,7 @@ def contact(request):
 
 
 def portfolio(request):
-    template = 'resume/portfolio.html'
+    template = 'resume/philosophy.html'
 
     # This try/except is needed because the unit test on the view has no HTTP_USER_AGENT and throws an exception
     # This seems like a dumb answer (should I write a fake one in the test to handle this?)

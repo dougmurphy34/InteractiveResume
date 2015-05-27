@@ -1,9 +1,3 @@
-p {
-    /*color: orange;*/
-    border-top: dotted black 2px;
-    padding-top: 10px;
-}
-
 h3 {
     clear: left;
 }
@@ -74,16 +68,43 @@ h3 {
     color: brown;
 }
 /* for the color-changing radius-changing shape that shows off Angular responsiveness */
-#circleDiv {
+#circleDiv, #animatedCircleDiv {
     color: white;
     width: 100px;
     height: 100px;
     text-align: center;
-    float: left;
+}
+
+#animatedCircleDiv {
+    border-radius: 50px;
+    transition: background-color 1.5s ease, border-radius 2s ease;
+    -webkit-transition: background-color 1.5s ease, border-radius 2s ease;
+    -o-transition: background-color 1.5s ease, border-radius 2s ease;
+    -moz-transition: background-color 1.5s ease, border-radius 2s ease;
+}
+
+#animatedCircleDiv.green {
+    background-color: green;
+}
+
+#animatedCircleDiv.blue {
+    background-color: blue;
+}
+
+#animatedCircleDiv.red {
+    background-color: red;
+}
+
+#animatedCircleDiv.rad50px {
+    border-radius: 50px;
+}
+
+#animatedCircleDiv.rad0px {
+    border-radius: 0;
 }
 
 #formDiv {
     padding: 0 50px;
-    float: left;
+    float: left; /* prevents labels from wrapping under radio buttons */
     margin-bottom: 20px;
 }
