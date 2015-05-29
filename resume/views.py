@@ -53,13 +53,6 @@ def contact(request):
 def portfolio(request):
     template = 'resume/philosophy.html'
 
-    # This try/except is needed because the unit test on the view has no HTTP_USER_AGENT and throws an exception
-    # This seems like a dumb answer (should I write a fake one in the test to handle this?)
-    try:
-        useragentstring = request.META['HTTP_USER_AGENT']
-    except:
-        useragentstring = ''
-
-    context = {'nbar': "portfolio", 'browser': useragentstring}
+    context = {'nbar': "portfolio"}
 
     return render(request, template, context)
