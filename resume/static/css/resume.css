@@ -76,9 +76,10 @@ footer h4 {
     float: right;
 }
 
-/* To control wrapping of icons.  This gets 2 per row (job_list skills column) */
+
 .skillColumn {
-    width: 90px;
+    width: 90px; /* To control wrapping of icons.  This gets 2 per row (job_list skills column) */
+    min-width: 90px; /* prevents narrow screen from compressing my 2-per-row down to 1-per-row */
 }
 
 /* To match common resume styling technique on job_detail page */

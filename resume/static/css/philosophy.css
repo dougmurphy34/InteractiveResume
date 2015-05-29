@@ -1,105 +1,151 @@
-@media (min-width: 640px) {
-    .smallscreen {
-        display: none;
-    }
-}
 
-@media (max-width: 1440px) {
-    .largescreen {
-        display: none;
-    }
-}
-
-@media (min-width: 1440px) , (max-width: 640px) {
-    .mediumscreen {
-        display: none;
-    }
-}
-
-@media all and (orientation: portrait) {
-    .widescreen {
-        display: none;
-    }
-}
-
-@media all and (orientation: landscape) {
-    .tallscreen {
-        display: none;
-    }
-}
-
-
-
-@media (max-device-width: 767px), handheld {
-    /* Shut down all the "resize your screen" tricks on non-resizeable screens */
-    .resizeable-only {
-        display: none;
+    h3.toppad {
+        position: relative;
+        top: 10px;
+        overflow: hidden;
     }
 
-}
+    .row div, #formDivHolder {
+        text-align: center;
+    }
 
-.wider {
-    letter-spacing: 5px;
-    font-size: 1.2em;
-    color: purple;
-}
+    #circleDiv, #animatedCircleDiv {
+        margin: auto;
+    }
 
-.taller {
-    transform: scaleY(1.8);
-    font-size: 1.2em;
-    color: purple;
-}
+    #contentRow1, #contentRow3 {
+        padding: 20px 0;
+    }
 
-.small {
-    font-size: 0.7em;
-    color: brown;
-}
+/* BUSY button styling */
+    #busyClean {
+        background: radial-gradient(pink, orange, lime);
+        background: -webkit-radial-gradient(pink, orange, lime);
+        background: -moz-radial-gradient(pink, orange, lime);
+        background: -o-radial-gradient(pink, orange, lime);
+        font-style: italic;
+        font-family: "cursive";
+        text-decoration: underline;
+        border: 2px dashed;
+    }
 
-.medium {
-    color: brown;
-}
+    #busy1 {
+        color: green;
+    }
 
-.large {
-    font-size: 1.3em;
-    color: brown;
-}
+    #busy2 {
+        color: purple;
+    }
+
+/* v-align the "is better than" text when columns are displayed side-by-side, but not in single-column view */
+    @media (min-width:768px) {
+        #ibtspacer1 {
+            top: 60px;
+        }
+        #ibtspacer3 {
+            top: 30px;
+        }
+    }
+
+/* Pad stuff (the form between the circles, animate button) on single-column view*/
+
+    @media (max-width: 767px) {
+        #formDivHolder {
+            padding: 10px 0;
+        }
+
+        #animationToggleButton {
+            margin-top: 10px;
+        }
+    }
+
+/* Animation of responsive vs static */
+    #innerResponsiveExample {
+        position: relative;
+        top: 20px;
+        height: 50%;
+        width: 100%;
+        transition: color 2s ease;
+    }
+
+
+    #innerUnresponsiveExample {
+        position: relative;
+        top: 20px;
+        height: 50px;
+        width: 200px;
+    }
+
+    @keyframes responsiveResize {
+        0%, 50%, 100% { width: 60%;}
+        25% {width: 80%;}
+        75% {width: 30%;}
+
+    }
+    @-webkit-keyframes responsiveResize {
+        0%, 50%, 100% { width: 60%;}
+        25% {width: 80%;}
+        75% {width: 30%;}
+    }
+    @-moz-keyframes responsiveResize {
+        0%, 50%, 100% { width: 60%;}
+        25% {width: 80%;}
+        75% {width: 30%;}
+    }
+    @-o-keyframes responsiveResize {
+        0%, 50%, 100% { width: 60%;}
+        25% {width: 80%;}
+        75% {width: 30%;}
+    }
+
+    .responsiveExample {
+        margin: auto;
+        padding: 0;
+        width: 60%;
+        background-color: black;
+        height: 150px;
+        border-radius: 15px;
+    }
+
+    .responsiveExample.active {
+        animation: responsiveResize 3s 0.5s infinite linear;
+        -webkit-animation: responsiveResize 4s 1.5s infinite linear;
+        -moz-animation: responsiveResize 3s 0.5s infinite linear;
+        -o-animation: responsiveResize 3s 0.5s infinite linear;/**/
+    }
+
 /* for the color-changing radius-changing shape that compares Angular responsiveness and CSS transition smoothness*/
-#circleDiv, #animatedCircleDiv {
-    color: white;
-    width: 100px;
-    height: 100px;
-    text-align: center;
-}
+    #circleDiv, #animatedCircleDiv {
+        color: white;
+        width: 100px;
+        height: 100px;
+        text-align: center;
+    }
 
-#animatedCircleDiv {
-    border-radius: 50px;
-    transition: background-color 1.5s ease, border-radius 2s ease;
-    -webkit-transition: background-color 1.5s ease, border-radius 2s ease;
-    -o-transition: background-color 1.5s ease, border-radius 2s ease;
-    -moz-transition: background-color 1.5s ease, border-radius 2s ease;
-}
+    #animatedCircleDiv {
+        border-radius: 50px;
+        transition: background-color 1.5s ease, border-radius 2s ease;
+        -webkit-transition: background-color 1.5s ease, border-radius 2s ease;
+        -o-transition: background-color 1.5s ease, border-radius 2s ease;
+        -moz-transition: background-color 1.5s ease, border-radius 2s ease;
+    }
 
-#animatedCircleDiv.green {
-    background-color: green;
-}
+    #animatedCircleDiv.green {
+        background-color: green;
+    }
 
-#animatedCircleDiv.blue {
-    background-color: blue;
-}
+    #animatedCircleDiv.blue {
+        background-color: blue;
+    }
 
-#animatedCircleDiv.red {
-    background-color: red;
-}
+    #animatedCircleDiv.red {
+        background-color: red;
+    }
 
-#animatedCircleDiv.rad50px {
-    border-radius: 50px;
-}
+    #animatedCircleDiv.rad50px {
+        border-radius: 50px;
+    }
 
-#animatedCircleDiv.rad0px {
-    border-radius: 0;
-}
-
-#formDiv {
-    padding: 0 50px;
-    margin-bottom: 20px;
-}
+    #animatedCircleDiv.rad0px {
+        border-radius: 0;
+    }
