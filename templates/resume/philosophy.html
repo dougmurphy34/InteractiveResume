@@ -51,16 +51,6 @@
 
         }]);
     </script>
-
-    <style>
-    #innerUnresponsiveExample, #innerResponsiveExample {
-        /*
-        background: url({% static 'images/blue-wood-texture.jpg' %});
-        background-size: contain;
-        */
-        background-color: #d43f3a;
-    }
-    </style>
 {% endblock page_scripts %}
 
 {% block body_block %}
@@ -104,8 +94,6 @@
             <div class="col-lg-5 col-med-5 col-sm-4">
                 {% verbatim %}
                     <div id="circleDiv" class="{{ circlecolor }} rad{{ selectedShape.radius }}">
-                        <!-- old way, doesn't work on IE
-                        style="border-radius: {{ selectedShape.radius }}; background: {{ circlecolor }};"-->
                         <h4 style="position: relative; top:25px;">I am a quick {{ circlecolor }} {{ selectedShape.name }}!</h4>
                     </div>
                 {% endverbatim %}

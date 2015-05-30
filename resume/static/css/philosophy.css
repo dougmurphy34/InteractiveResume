@@ -42,8 +42,6 @@
         #ibtspacer1 {
             top: 60px;
         }
-        #ibtspacer3 {
-        }
     }
 
 /* Pad stuff (the form between the circles, animate button) on single-column view*/
@@ -56,6 +54,10 @@
         #animationToggleButton {
             margin-top: 10px;
         }
+    }
+
+    #innerUnresponsiveExample, #innerResponsiveExample {
+        background-color: #d43f3a;
     }
 
 /* Animation of responsive vs static */

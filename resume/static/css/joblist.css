@@ -1,0 +1,45 @@
+/* Minor layout tweaks for area around picture */
+.localPad {
+    margin: 0 10px;
+}
+
+.bottomPad {
+    margin: 10px 0;
+}
+
+@media (max-width: 600px) {
+    p {
+        font-size: 1em;
+    }
+}
+
+/* On narrow screens, hide the super-wide column to make the page still work as a grid.  Data is still
+    available on detail page. */
+@media (max-width: 768px) {
+    .bigColumn {
+        display: none;
+    }
+}
+
+.filteredJobs:hover {
+    background-color: #8888CC !important;
+}
+
+/* Animation for filters */
+.filteredJobs.ng-enter, .filteredJobs.ng-leave {
+    -webkit-transition: 200ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -moz-transition: 200ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -o-transition: 200ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    transition: 200ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+}
+
+/* TODO: This left animation (slideout) looks great, but it doesn't work with a table layout.  It might work with CSS-table styles.  Redesign?*/
+.filteredJobs.ng-enter.ng-enter-active, .filteredJobs.ng-leave {
+    opacity: 1;
+    /*left: 0;*/
+}
+
+.filteredJobs.ng-enter, .filteredJobs.ng-leave-active {
+    opacity: 0;
+    /*left: -750px;*/
+}

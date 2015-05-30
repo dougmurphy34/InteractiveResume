@@ -52,8 +52,7 @@ footer h4 {
             border-radius: 6px;
             font-family: 'Iceland', cursive;
             max-height: 90%;
-            overflow: hidden; /* prevents scrollbars due to overflow on height with tiny width during transition, but
-             makes the close animation lose text immediately.  Why?  */
+            overflow: auto;
             height: auto;
             width: 80%;
             opacity: 1;
@@ -70,12 +69,17 @@ footer h4 {
     color: blue;
     top: 10px;
     left: 0;
+    overflow: hidden;/* for closing animation only */
 }
 
 .floatRight {
     float: right;
 }
 
+.autoResizeImage {
+    max-width: 100%;
+    max-height:100%;
+}
 
 .skillColumn {
     width: 90px; /* To control wrapping of icons.  This gets 2 per row (job_list skills column) */
@@ -88,11 +92,11 @@ footer h4 {
 }
 
 .carousel-control:hover {
-        cursor: pointer;
-    }
+    cursor: pointer;
+}
 
 .carousel-control:hover span {
-        font-size: 1.3em;
+    font-size: 1.3em;
 }
 
 /* for Job Detail page, to center and pad logo box.  Box Shadow for fun. */
@@ -120,14 +124,8 @@ footer h4 {
     border-radius: 5px;
 }
 
-/* For that one dumb (formerly!) sideways image.  Also, now it plays nicely with paragraph text. */
 .front-page-image {
     width:120px;
-    /**/
-    /*Obsolete - I just properly rotated the image in GIMP
-    display: inline-block;  Because webkit-based browsers ignore -webkit-transform on inline elements
-    -webkit-transform: rotate(90deg);
-    transform: rotate(90deg);*/
     margin: 20px 10px;
     float: left;
 }
@@ -160,4 +158,14 @@ a {
     /* Prevent (glyphicon + text) in links from being split onto separate lines*/
     white-space: nowrap;
     transition: color 1s ease;
+}
+
+/*
+  Allow angular.js to be loaded in body, hiding cloaked elements until
+  templates compile.  The !important is important given that there may be
+  other selectors that are more specific or come later and might alter display.
+ */
+/* Specifically, this should prevent the "flicker" of the popoutFooterDiv when loading pages */
+[ng\:cloak], [ng-cloak], .ng-cloak, .ng-show {
+  display: none !important;
 }
