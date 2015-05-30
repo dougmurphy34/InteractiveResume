@@ -9,6 +9,15 @@
             margin: 0 10px;
         }
 
+        .bottomPad {
+            margin: 10px 0;
+        }
+
+        .autoResizeImage {
+            max-width: 100%;
+            max-height:100%;
+        }
+
         /* On narrow screens, hide the super-wide column to make the page still work as a grid.  Data is still
             available on detail page. */
         @media (max-width: 768px) {
@@ -17,6 +26,11 @@
             }
         }
 
+        @media (max-width: 600px) {
+            p {
+                font-size: 1em;
+            }
+        }
 
         .filteredJobs {
 
@@ -113,8 +127,20 @@
 {% block body_block %}
 
     <div class="container-fluid" ng-controller="sort_controller">
+        <div class="row">
+            <div class="col-lg-3 col-med-4 col-sm-5 col-xs-4">
+                <img src="{% static 'images/cup-mug-desk-office-300x202.jpg' %}" class="autoResizeImage bottomPad" >
+            </div>
+            <div class="col-lg-9 col-med-8 col-sm-7 col-xs-8">
+                <p>My fifteen-year career has spanned roles and industries, but always with a focus on web technology. I've build software, budgets, and teams.
+                My adaptability is my greatest professional asset.</p>
+            </div>
+            <!--
+            <span class="glyphicon glyphicon-briefcase"></span>  -->
+        </div>
 
-        <p><span class="glyphicon glyphicon-briefcase"></span> My fifteen-year career has spanned roles and industries, but always with a focus on web technology.</p>
+
+
         <div class="form-group">
             <input type="text" class="form-inline localPad" autofocus ng-model="typedText.company_name" typeahead="job.company_name for job in jobs_from_django | filter: {company_name: $viewValue}" placeholder="by Company Name"/>
             {% verbatim %}
