@@ -101,6 +101,10 @@
             //for Typeahead on company filter text input
             $scope.typedText = undefined;
 
+            $scope.go = function(page) {
+                window.location = page;
+            }
+
         });
     </script>
 
@@ -133,9 +137,10 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="filteredJobs" ng-repeat="job in jobs_from_django | filter:skillFilter | filter: typedText ">
+                <tr class="filteredJobs" ng-repeat="job in jobs_from_django | filter:skillFilter | filter: typedText "
+                    ng-click="go(job.detail_link)" title="see details for {% verbatim %}{{ job.company_name }}{% endverbatim %}">
                     <td>
-                        {% verbatim %}<a href="{{ job.detail_link }}" title="See job details">{{ job.company_name }}</a>{% endverbatim %}
+                        {% verbatim %}{{ job.company_name }}{% endverbatim %}
                     </td>
                     <td>
                         {% verbatim %}{{ job.job_title }}{% endverbatim %}

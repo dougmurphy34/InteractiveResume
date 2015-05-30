@@ -112,12 +112,14 @@ footer h4 {
     border-radius: 5px;
 }
 
-/* For that one dumb sideways image.  Also, now it plays nicely with paragraph text. */
+/* For that one dumb (formerly!) sideways image.  Also, now it plays nicely with paragraph text. */
 .front-page-image {
-    display: inline-block; /* Because webkit-based browsers ignore -webkit-transform on inline elements */
     width:120px;
+    /**/
+    /*Obsolete - I just properly rotated the image in GIMP
+    display: inline-block;  Because webkit-based browsers ignore -webkit-transform on inline elements
     -webkit-transform: rotate(90deg);
-    transform: rotate(90deg);
+    transform: rotate(90deg);*/
     margin: 20px 10px;
     float: left;
 }
