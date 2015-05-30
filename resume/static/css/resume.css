@@ -87,6 +87,14 @@ footer h4 {
     text-align: right;
 }
 
+.carousel-control:hover {
+        cursor: pointer;
+    }
+
+.carousel-control:hover span {
+        font-size: 1.3em;
+}
+
 /* for Job Detail page, to center and pad logo box.  Box Shadow for fun. */
 .logo-panel, .image-panel {
     padding: 20px;

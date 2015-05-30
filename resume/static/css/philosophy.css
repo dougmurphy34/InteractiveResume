@@ -129,22 +129,22 @@
         -moz-transition: background-color 1.5s ease, border-radius 2s ease;
     }
 
-    #animatedCircleDiv.green {
+    #animatedCircleDiv.green, #circleDiv.green {
         background-color: green;
     }
 
-    #animatedCircleDiv.blue {
+    #animatedCircleDiv.blue, #circleDiv.blue {
         background-color: blue;
     }
 
-    #animatedCircleDiv.red {
+    #animatedCircleDiv.red, #circleDiv.red {
         background-color: red;
     }
 
-    #animatedCircleDiv.rad50px {
+    #animatedCircleDiv.rad50px, #circleDiv.rad50px {
         border-radius: 50px;
     }
 
-    #animatedCircleDiv.rad0px {
+    #animatedCircleDiv.rad0px, #circleDiv.rad0px {
         border-radius: 0;
     }

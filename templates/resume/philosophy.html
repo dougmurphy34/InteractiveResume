@@ -103,7 +103,9 @@
         <div class="panel panel-body">
             <div class="col-lg-5 col-med-5 col-sm-4">
                 {% verbatim %}
-                    <div id="circleDiv" style="border-radius: {{ selectedShape.radius }}; background: {{ circlecolor }};">
+                    <div id="circleDiv" class="{{ circlecolor }} rad{{ selectedShape.radius }}">
+                        <!-- old way, doesn't work on IE
+                        style="border-radius: {{ selectedShape.radius }}; background: {{ circlecolor }};"-->
                         <h4 style="position: relative; top:25px;">I am a quick {{ circlecolor }} {{ selectedShape.name }}!</h4>
                     </div>
                 {% endverbatim %}
