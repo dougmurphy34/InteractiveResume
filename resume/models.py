@@ -44,6 +44,7 @@ class Job(models.Model):
             return str(final_answer) + " Years"
 
     def date_range(self):
+        # Sample Output: "July 1999 - January 2000"
         # strftime('%B') means string format the time, using full month name based on locale.  See:
         # http://php.net/manual/en/function.strftime.php
         range_string = self.start_date.strftime('%B') + " " + str(self.start_date.year)

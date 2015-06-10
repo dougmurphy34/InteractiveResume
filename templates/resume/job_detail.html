@@ -12,61 +12,128 @@
         }
     </style>
 
+    <script>
+        resume_app.controller('tabController', ['$scope', function($scope) {
 
+            //Hand off data from middleware (Django) to browser (Angular)
+            //TODO TEST: What if I just handed off the job objects?
+            $scope.jobs_from_django = [
+                {% for job in jobs %}
+                    {% autoescape off %}
+                    {company_name: "{{ job.company_name }}", job_title: "{{ job.job_title }}",
+                    job_description: "{{ job.job_description }}", service_time: "{{ job.service_time }}",
+                    date_range: "{{ job.date_range }}", job_id: "{{ job.id }}",
+
+                    splash_image: "{% if job.splash_image %} {% static job.splash_image %} {% endif %}",
+                    company_logo: "{% static job.company_logo  %}",
+                    skill_icons: [
+                        {% for skill in job.related_skills %}
+                            "{% static skill.skill_logo %}",
+                        {% endfor %}
+                    ], skills: [
+                        {% for skill in job.related_skills %}
+                            "{{ skill.skill_name }}",
+                        {% endfor %}],
+
+                    accomplishments: [
+                        {% for thing in job.related_accomplishments %}
+                            '{{ thing.accomplishment_text }}',
+                        {% endfor %}
+                    ],
+                    splash_image_caption: '{{ job.splash_image_caption }}'//Should find an autoescape answer that works for both single and double quotes in content
+                    {% endautoescape %}
+                    },
+
+
+                {% endfor %}
+            ];
+
+
+            /*
+            $scope.jobActive = [
+                {% for job in jobs %}
+                    {jobid: {{job.id}}, active:
+                    {% if job.id == job_id_selected %}"active"{% else %}""{% endif %}
+                    },
+                {% endfor %}
+            ];
+            */
+
+            // HACKY OLD WAY - Array holding all the jobs [jobid, activeBool]
+
+            $scope.activate = function(jobid) {
+                //Loop on job array.  If == jobid, set to active, otherwise not active
+                for (var i=0; i< $scope.jobActive.length; i++) {
+                    if ($scope.jobActive[i].job == jobid) {
+                        $scope.jobActive[i].active = "active";
+                    }
+                    else {
+                        $scope.jobActive[i].active = "";
+                    }
+                }
+
+            }
+        }]);
+    </script>
 
 {% endblock page_scripts %}
 
 {% block body_block %}
-    <h3><span class="label label-info"><span class="glyphicon glyphicon-backward"></span> <a href="{% url 'resume.views.all_my_jobs' %}">return to joblist</a></span></h3>
+<div class="container" ng-controller="tabController">
 
-
-    <div class="container">
-        <div class="panel panel-primary">
-            <div class="panel-heading clearfix">
-                <h1><img src="{% static job.company_logo %}" class="medium-logo"/> {{ job.company_name }}<span class="jobTitle">{{ job.job_title }}</span></h1>
-
-            </div>
-            <div class="panel-body">
-                <h5 class="date-range">{{ job.date_range }}</h5>
-
-                <p>{{ job.job_description }}</p>
-
-                <ul>
-                    {% for thing in job.related_accomplishments %}
-                        <li><h4>{{ thing.accomplishment_text }}</h4></li>
-                    {% endfor %}
-                </ul>
-                <div id="menuSpacerDiv"></div>
-
-
-                <div class="row">
-                    <div class="col-lg-6 col-med-6 col-sm-6">
-                        {% if job.splash_image %}
-                        <div class="panel panel-default image-panel">
-                            <figure>
-                                <img src="{% static job.splash_image %}" alt="{{ job }} image"/>
-                                <figcaption>{{ job.splash_image_caption }}</figcaption>
-                            </figure>
-                        </div>
-                        {% endif %}
+    {%verbatim%}
+    <tabset>
+        <tab ng-repeat="job in jobs_from_django" heading="{{ job.company_name }}" active="tab.active">
+            <div class="panel panel-primary">
+                    <div class="panel-heading clearfix">
+                        <h1><img src="{{ job.company_logo }}" class="medium-logo"/> {{ job.company_name }}<span class="jobTitle">{{ job.job_title }}</span></h1>
                     </div>
-                    <div class="col-lg-6 col-med-6 col-sm-6">
-                        <div class="panel panel-default logo-panel" {% if not job.related_skills %}style="visibility:hidden;"{% endif %}>
+                    <div class="panel-body">
+                        <h5 class="date-range">{{ job.date_range }}</h5>
 
-                                {% for skill in job.related_skills %}
-                                   <img src="{% static skill.skill_logo %}" class="medium-logo"/>
-                                {% endfor %}
+                        <p>{{ job.job_description }}</p>
 
+                        <ul>
 
-                        </div>
-                    </div>
-                </div>
+                                <li ng-repeat="thing in job.accomplishments"><h4>{{ thing }}</h4></li>
 
-            </div>
-
-        </div>
-    </div>
+                        </ul>
+                        <div id="menuSpacerDiv"></div>
 
 
+                        <div class="row">
+                            <div class="col-lg-6 col-med-6 col-sm-6">
+
+                                <div ng-if="job.splash_image" class="panel panel-default image-panel">
+                                    <figure>
+                                        <img src="{{ job.splash_image }}" alt="{{ job.splash_image_caption }}"/>
+
+                                        <figcaption>{{ job.splash_image_caption }}</figcaption>
+
+                                    </figure>
+                                </div> <!-- job image panel -->
+
+                            </div> <!-- job image column -->
+                            <div class="col-lg-6 col-med-6 col-sm-6">
+                                <div ng-show="job.skill_icons.length" class="panel panel-default logo-panel">
+
+
+                                           <img ng-repeat="icon in job.skill_icons" src="{{ icon }}" class="medium-logo"/>
+
+
+
+                                </div> <!-- skill icon panel -->
+                            </div> <!-- skill icon column -->
+                        </div> <!-- bottom row of job detail -->
+
+                    </div> <!-- panel body -->
+
+                </div> <!-- job panel -->
+        </tab>
+    </tabset>
+    {% endverbatim %}
+
+
+</div> <!-- container -->
 
 {% endblock %}

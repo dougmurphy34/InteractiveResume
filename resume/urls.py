@@ -10,7 +10,9 @@ urlpatterns = patterns('',
 
     url(r'^$', views.index, name='index'),
     url(r'joblist', views.all_my_jobs, name='job_list'),
-    url(r'^job/(?P<job_id>\d+)/$', views.job_detail, name='job_detail'),
-    url(r'^(?P<job_id>\d+)/$', views.job_detail),
+    #url(r'^job/(?P<job_id>\d+)/$', views.job_detail, name='job_detail'),
+    #url(r'^(?P<job_id>\d+)/$', views.job_detail),
+    url(r'^job/(?P<job_id>\d+)/$', views.job_detail_all, name='job_detail'),
+    url(r'^(?P<job_id>\d+)/$', views.job_detail_all, name='job_detail'),
     url(r'portfolio', views.portfolio, name='portfolio'),
 )

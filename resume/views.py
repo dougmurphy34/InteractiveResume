@@ -30,7 +30,7 @@ def all_my_jobs(request):  # doesn't match template name, should probably rename
 
     return render(request, template, context)
 
-
+# replace this with job_detail_all
 def job_detail(request, job_id):
     try:
         job = Job.objects.get(pk=job_id)
@@ -40,6 +40,19 @@ def job_detail(request, job_id):
         template = 'irf/error.html'
         context = {'error_text': "That job doesn't seem to exist."}
 
+    return render(request, template, context)
+
+# Use this instead of job_detail, when implementing tab-based job detail view
+def job_detail_all(request, job_id):
+    try:
+        jobs = Job.objects.all().order_by('start_date')
+        job_id_selected = int(job_id)
+        template = 'resume/job_detail.html'
+        context = {'jobs': jobs, 'job_id_selected': job_id_selected, 'nbar': "job_detail"}
+
+    except:
+        template = 'irf/error.html'
+        context = {'error_text': "Loading all the jobs went poorly."}
     return render(request, template, context)
 
 
