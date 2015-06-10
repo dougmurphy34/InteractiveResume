@@ -12,7 +12,7 @@ class AccomplishmentsInline(admin.StackedInline):
 class JobAdmin(admin.ModelAdmin):
     # end_date isn't bold in the admin view because it's not required - it can be null
     fieldsets = [
-        ('Names', {'fields': ['company_name', 'job_title']}),
+        ('Names', {'fields': ['company_name', 'company_short_name', 'job_title']}),
         ('Images', {'fields': ['company_logo', 'splash_image', 'splash_image_caption']}),
         ('Dates', {'fields': ['start_date', 'end_date']}),  #, 'classes': ['collapse']
         ('Description', {'fields': ['job_description'], 'classes': ['wide']})

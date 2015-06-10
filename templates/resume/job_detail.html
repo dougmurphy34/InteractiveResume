@@ -8,7 +8,18 @@
         .jobTitle {
             float: right;
             font-style: italic;
-            font-size: 0.9em; /* Text is aligning at the top of H1, not the bottom, looks a bit funny.  Get another opinion. */
+            font-size: 0.9em;
+        }
+
+        #maintab a {
+            white-space: pre;
+            text-align: center;
+        }
+
+        @media (max-width: 700px) {
+            #maintab {
+                font-size: 0.8em;
+            }
         }
     </style>
 
@@ -23,7 +34,7 @@
                     {company_name: "{{ job.company_name }}", job_title: "{{ job.job_title }}",
                     job_description: "{{ job.job_description }}", service_time: "{{ job.service_time }}",
                     date_range: "{{ job.date_range }}", job_id: "{{ job.id }}",
-
+                    heading: "{{ job.company_short_name }}" + "\r\n" + "{{ job.date_range_year_only }}",
                     splash_image: "{% if job.splash_image %} {% static job.splash_image %} {% endif %}",
                     company_logo: "{% static job.company_logo  %}",
                     skill_icons: [
@@ -48,31 +59,8 @@
                 {% endfor %}
             ];
 
+            //$scope.isThreeActive = $scope.tabs[];
 
-            /*
-            $scope.jobActive = [
-                {% for job in jobs %}
-                    {jobid: {{job.id}}, active:
-                    {% if job.id == job_id_selected %}"active"{% else %}""{% endif %}
-                    },
-                {% endfor %}
-            ];
-            */
-
-            // HACKY OLD WAY - Array holding all the jobs [jobid, activeBool]
-
-            $scope.activate = function(jobid) {
-                //Loop on job array.  If == jobid, set to active, otherwise not active
-                for (var i=0; i< $scope.jobActive.length; i++) {
-                    if ($scope.jobActive[i].job == jobid) {
-                        $scope.jobActive[i].active = "active";
-                    }
-                    else {
-                        $scope.jobActive[i].active = "";
-                    }
-                }
-
-            }
         }]);
     </script>
 
@@ -82,8 +70,9 @@
 <div class="container" ng-controller="tabController">
 
     {%verbatim%}
+    Is three active?  {{ isThreeActive }} {{ tab.active }}
     <tabset>
-        <tab ng-repeat="job in jobs_from_django" heading="{{ job.company_name }}" active="tab.active">
+        <tab id="maintab" ng-repeat="job in jobs_from_django" heading="{{ job.heading }}" active="tab.active">
             <div class="panel panel-primary">
                     <div class="panel-heading clearfix">
                         <h1><img src="{{ job.company_logo }}" class="medium-logo"/> {{ job.company_name }}<span class="jobTitle">{{ job.job_title }}</span></h1>

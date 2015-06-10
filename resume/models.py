@@ -4,15 +4,16 @@ import datetime
 
 class Job(models.Model):
     company_name = models.CharField(max_length=50)
+    company_short_name = models.CharField(max_length=20)
     start_date = models.DateField()
     end_date = models.DateField(blank=True, null=True)
     job_title = models.CharField(max_length=50)
-    job_description = models.TextField(null=True)
+    job_description = models.TextField(null=True, blank=True)
     # company_logo returns a string that, when passed to "static" in an image src, will load the logo.
     # Usage: <img src="{% static job.company_logo %}" />
-    company_logo = models.CharField(max_length=50, null=True)
-    splash_image = models.CharField(max_length=50, null=True)
-    splash_image_caption = models.CharField(max_length=100, null=True)
+    company_logo = models.CharField(max_length=50, null=True, blank=True)
+    splash_image = models.CharField(max_length=50, null=True, blank=True)
+    splash_image_caption = models.CharField(max_length=100, null=True, blank=True)
 
     def __unicode__(self):
         return str(self.company_name + " - " + self.job_title)
@@ -53,6 +54,16 @@ class Job(models.Model):
             range_string += " - today"
         else:
             range_string += " - " + self.end_date.strftime('%B') + " " + str(self.end_date.year)
+
+        return range_string
+
+    def date_range_year_only(self):
+        range_string = str(self.start_date.year)
+
+        if self.still_employed():
+            range_string += " - today"
+        else:
+            range_string += " - " + str(self.end_date.year)
 
         return range_string
 
