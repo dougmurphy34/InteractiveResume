@@ -111,7 +111,7 @@
     <!-- Page Footer -->
 
     <footer ng-controller="footerDivController">
-    <div class="popoutFooterDiv" ng-show="popOpen">{% include "irf/site_build_subtemplate.html" %}</div>
+    <div class="popoutFooterDiv" ng-show="popOpen" ng-cloak>{% include "irf/site_build_subtemplate.html" %}</div>
         <h4>Prefer a <a href="{% static 'DougMurphyResume12-10-2014.pdf' %}">traditional PDF resume</a>?<a href="#" class="floatRight" ng-click="toggleFooterDiv();">How did I build this page?</a></h4>
     </footer>
 </body>

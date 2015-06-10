@@ -11,13 +11,13 @@
             font-size: 0.9em;
         }
 
-        #maintab a {
+        .maintab a {
             white-space: pre;
             text-align: center;
         }
 
         @media (max-width: 700px) {
-            #maintab {
+            .maintab {
                 font-size: 0.8em;
             }
         }
@@ -36,7 +36,7 @@
                     date_range: "{{ job.date_range }}", job_id: "{{ job.id }}",
                     heading: "{{ job.company_short_name }}" + "\r\n" + "{{ job.date_range_year_only }}",
                     splash_image: "{% if job.splash_image %} {% static job.splash_image %} {% endif %}",
-                    company_logo: "{% static job.company_logo  %}",
+                    company_logo: "{% static job.company_logo  %}", id: "{{ job.id }}",
                     skill_icons: [
                         {% for skill in job.related_skills %}
                             "{% static skill.skill_logo %}",
@@ -59,17 +59,20 @@
                 {% endfor %}
             ];
 
-        }]);
+        }]); //End tabController
+
+
+
     </script>
 
 {% endblock page_scripts %}
 
 {% block body_block %}
-<div class="container" ng-controller="tabController">
+<div class="container" ng-controller="tabController" ng-cloak>
 
     {%verbatim%}
     <tabset>
-        <tab id="maintab" ng-repeat="job in jobs_from_django" heading="{{ job.heading }}" active="tab.active">
+        <tab class="maintab" ng-repeat="job in jobs_from_django" heading="{{ job.heading }}" active="tab.active" id="tab{{ job.id }}">
             <div class="panel panel-primary">
                     <div class="panel-heading clearfix">
                         <h1><img src="{{ job.company_logo }}" class="medium-logo"/> {{ job.company_name }}<span class="jobTitle">{{ job.job_title }}</span></h1>
@@ -121,5 +124,36 @@
 
 
 </div> <!-- container -->
+
+<script>
+    //A function that takes an element's ID and simulates a mouse click
+        function simulateClick(elid) {
+              var evt = new MouseEvent("click", {
+                bubbles: true,
+                cancelable: true,
+                view: window
+              });
+                //I am deeply embarrassed by the next line of code.  LOOK HERE FOR PROBLEMS.
+              var cb = document.getElementById(elid).firstElementChild; //element to click on
+              var canceled = !cb.dispatchEvent(evt);
+              /* TESTING ONLY
+                if(canceled) {
+                // A handler called preventDefault
+                alert("canceled");
+              } else {
+                // None of the handlers called preventDefault
+                alert(cb.innerHTML);
+              }
+              */
+        }
+        //document.getElementById("button").addEventListener('click', alert('button clicked'));
+
+    document.addEventListener('DOMContentLoaded', function() {
+        //Select the correct initial tab
+        //This is sooooo hacky .... no words .....
+        simulateClick("tab{{ job_id_selected }}");//
+    });
+</script>
+
 
 {% endblock %}
