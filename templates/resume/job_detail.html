@@ -5,6 +5,10 @@
 {% block page_scripts %}
 
     <style>
+        #backToJoblist {
+            margin: 0;
+        }
+
         .jobTitle {
             float: right;
             font-style: italic;
@@ -68,8 +72,9 @@
 {% endblock page_scripts %}
 
 {% block body_block %}
-<div class="container" ng-controller="tabController" ng-cloak>
+    <h5 id="backToJoblist"><span class="label label-info"><span class="glyphicon glyphicon-backward"></span> <a href="{% url 'resume.views.all_my_jobs' %}">return to joblist</a></span></h5>
 
+<div class="container" ng-controller="tabController" ng-cloak>
     {%verbatim%}
     <tabset>
         <tab class="maintab" ng-repeat="job in jobs_from_django" heading="{{ job.heading }}" active="tab.active" id="tab{{ job.id }}">

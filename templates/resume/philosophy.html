@@ -51,10 +51,41 @@
 
         }]);
     </script>
+
+    <style>
+        .glyphicon-in-paragraph {
+            font-size: 2em;
+            float: left;
+            margin-right: 7px;
+            top: 8px;
+        }
+
+        @media (min-width: 768px) {
+            .introtext {
+                width: 70%;
+            }
+        }
+
+
+    </style>
+
 {% endblock page_scripts %}
 
 {% block body_block %}
 <div class="container-fluid" ng-controller="ExampleController">
+
+    <p class="introtext"><span class="glyphicon glyphicon-leaf glyphicon-in-paragraph"></span> I love making big changes to small companies. I’m passionate about computer technology,
+    green energy, and doing well while doing good. I see every job as a puzzle with an optimal
+    solution to be discovered. I only work in places where I perceive social good in the business'
+    end goal.</p>
+
+    <p class="introtext">Web sites, whether informational or transactional, are for users.  I design web sites to fit use cases.  Anything
+    that doesn't help the user doesn't deserve a spot on the page.</p>
+
+    <blockquote>
+        A designer knows he has achieved perfection not when there is nothing left to add, but when there is nothing left to take away.<br>
+        <cite>-- Antoine de Saint-Exupéry</cite>
+    </blockquote>
 
     <h1>Responsiveness</h1>
 
@@ -85,7 +116,7 @@
 
     <h1>Transition speeds</h1>
     <p>If most users will be making many changes quickly, changes should be instant.  Otherwise, visual changes should
-    move slowly to offer a visual cue.</p>
+    move smoothly to offer a visual cue.</p>
     <div class="panel panel-primary">
         <div class="panel panel-heading" id="contentRow2">
             Try it!
