@@ -17,6 +17,34 @@
         padding: 20px 0;
     }
 
+/* Intro paragraph styling */
+    .glyphicon-in-paragraph {
+            font-size: 2em;
+            float: left;
+            margin-right: 7px;
+            top: 8px;
+    }
+
+    @media (min-width: 768px) {
+        .introtext {
+            width: 70%;
+        }
+    }
+
+/* Make Blockquote jump */
+
+        blockquote {
+            margin: 20px 10%;
+            max-width: 350px;
+        }
+
+        @media (min-width: 768px) {
+            blockquote {
+                margin: 20px 30% 20px 10%;
+            }
+        }
+
+
 /* BUSY button styling */
     #busyClean {
         background: radial-gradient(pink, orange, lime);
